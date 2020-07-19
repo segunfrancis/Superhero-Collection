@@ -9,6 +9,7 @@ import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.framework.remote.ApiHelper
 import com.project.segunfrancis.superherocollection.framework.remote.ApiServiceImpl
 import com.project.segunfrancis.superherocollection.presesntation.SuperHeroViewModelFactory
+import com.project.segunfrancis.superherocollection.presesntation.utils.Resource
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,11 +23,18 @@ class MainActivity : AppCompatActivity() {
             SuperHeroViewModelFactory(ApiHelper(ApiServiceImpl()))
         )
             .get(MainActivityViewModel::class.java)
-        viewModel.superHeroes.observe(this, Observer {
-            displaySnackBar(it.characters[1].name)
-        })
-        viewModel.error.observe(this, Observer { error ->
-            displaySnackBar(error)
+        viewModel.superHeroes.observe(this, Observer { resource ->
+            when(resource) {
+                is Resource.Loading -> {
+                    displaySnackBar(resource.message)
+                }
+                is Resource.Success -> {
+                    displaySnackBar(resource.result.characters[2].name)
+                }
+                is Resource.Error -> {
+                    displaySnackBar(resource.message)
+                }
+            }
         })
     }
 
