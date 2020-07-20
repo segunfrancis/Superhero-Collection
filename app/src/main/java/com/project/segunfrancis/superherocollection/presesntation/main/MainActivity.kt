@@ -23,8 +23,12 @@ class MainActivity : AppCompatActivity() {
             SuperHeroViewModelFactory(ApiHelper(ApiServiceImpl()))
         )
             .get(MainActivityViewModel::class.java)
+        viewModel.progress.observe(this, Observer { progress ->
+            test_progress.progress = progress
+            test_progress.text = progress.toString()
+        })
         viewModel.superHeroes.observe(this, Observer { resource ->
-            when(resource) {
+            when (resource) {
                 is Resource.Loading -> {
                     displaySnackBar(resource.message)
                 }
