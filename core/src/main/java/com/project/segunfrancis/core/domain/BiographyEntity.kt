@@ -1,6 +1,7 @@
 package com.project.segunfrancis.core.domain
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class BiographyEntity(
     @SerializedName("aliases")
@@ -17,4 +18,4 @@ data class BiographyEntity(
     val placeOfBirth: String,
     @SerializedName("publisher")
     val publisher: String
-)
+): Serializable

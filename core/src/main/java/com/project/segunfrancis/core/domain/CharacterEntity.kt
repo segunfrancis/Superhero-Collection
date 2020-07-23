@@ -1,6 +1,7 @@
 package com.project.segunfrancis.core.domain
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class CharacterEntity(
     @SerializedName("appearance")
@@ -21,4 +22,4 @@ data class CharacterEntity(
     val slug: String,
     @SerializedName("work")
     val work: WorkEntity
-)
+): Serializable

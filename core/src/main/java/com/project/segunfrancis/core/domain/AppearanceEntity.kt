@@ -1,6 +1,7 @@
 package com.project.segunfrancis.core.domain
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class AppearanceEntity(
     @SerializedName("eyeColor")
@@ -15,4 +16,4 @@ data class AppearanceEntity(
     val race: String,
     @SerializedName("weight")
     val weight: List<String>
-)
+): Serializable

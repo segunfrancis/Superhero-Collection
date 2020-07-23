@@ -1,6 +1,7 @@
 package com.project.segunfrancis.core.domain
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 /**
  * Created by SegunFrancis
@@ -12,4 +13,4 @@ data class SuperHeroEntity(
     val nextCursor: Int,
     @SerializedName("previous_cursor")
     val previousCursor: Int
-)
+): Serializable

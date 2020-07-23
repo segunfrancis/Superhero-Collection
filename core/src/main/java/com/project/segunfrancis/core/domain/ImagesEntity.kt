@@ -1,6 +1,7 @@
 package com.project.segunfrancis.core.domain
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ImagesEntity(
     @SerializedName("lg")
@@ -11,4 +12,4 @@ data class ImagesEntity(
     val sm: String,
     @SerializedName("xs")
     val xs: String
-)
+): Serializable

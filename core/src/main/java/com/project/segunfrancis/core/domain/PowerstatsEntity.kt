@@ -1,6 +1,7 @@
 package com.project.segunfrancis.core.domain
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PowerstatsEntity(
     @SerializedName("combat")
@@ -15,4 +16,4 @@ data class PowerstatsEntity(
     val speed: Int,
     @SerializedName("strength")
     val strength: Int
-)
+): Serializable
