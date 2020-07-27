@@ -1,4 +1,4 @@
-package com.project.segunfrancis.core.domain
+package com.project.segunfrancis.superherocollection.framework.domain
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

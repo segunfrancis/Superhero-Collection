@@ -3,14 +3,13 @@ package com.project.segunfrancis.superherocollection.presesntation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.project.segunfrancis.superherocollection.framework.MainRepository
-import com.project.segunfrancis.superherocollection.framework.remote.ApiHelper
 import com.project.segunfrancis.superherocollection.presesntation.main.MainActivityViewModel
 
 /**
  * Created by SegunFrancis
  */
 
-class SuperHeroViewModelFactory(private val helper: ApiHelper) : ViewModelProvider.Factory {
+class SuperHeroViewModelFactory(private val repository: MainRepository) : ViewModelProvider.Factory {
 
     /**
      * Creates a new instance of the given `Class`.
@@ -22,7 +21,7 @@ class SuperHeroViewModelFactory(private val helper: ApiHelper) : ViewModelProvid
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(modelClass)) {
-            return MainActivityViewModel(MainRepository(helper)) as T
+            return MainActivityViewModel(repository) as T
         } else {
             throw IllegalArgumentException("Unknown class name")
         }

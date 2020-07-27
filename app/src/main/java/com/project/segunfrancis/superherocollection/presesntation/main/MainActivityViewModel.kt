@@ -4,13 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.project.segunfrancis.core.domain.SuperHeroEntity
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.project.segunfrancis.superherocollection.framework.MainRepository
+import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
+import com.project.segunfrancis.superherocollection.framework.domain.SuperHeroEntity
 import com.project.segunfrancis.superherocollection.presesntation.utils.Resource
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 /**
@@ -19,7 +20,6 @@ import kotlinx.coroutines.launch
 
 class MainActivityViewModel(private val repository: MainRepository) : ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
     private val _superHeroes = MutableLiveData<Resource<SuperHeroEntity>>()
     val superHeroes: LiveData<Resource<SuperHeroEntity>>
         get() = _superHeroes
@@ -31,24 +31,15 @@ class MainActivityViewModel(private val repository: MainRepository) : ViewModel(
     private val endProgress = 65F
 
     init {
-        fetchSuperHeroes()
         viewModelScope.launch {
             getProgress()
         }
     }
 
-    private fun fetchSuperHeroes() {
+    fun fetchSuperHeroes(): Flow<PagingData<CharacterEntity>> {
         _superHeroes.value = Resource.Loading("Loading...")
-        compositeDisposable.add(
-            repository.getSuperHeroesRemote().subscribeOn(Schedulers.io()).observeOn(
-                AndroidSchedulers.mainThread()
-            )
-                .subscribe({ superHeroes ->
-                    _superHeroes.value = Resource.Success(superHeroes, "Success")
-                }, { t: Throwable? ->
-                    _superHeroes.value = Resource.Error(t!!, t.localizedMessage!!)
-                })
-        )
+        return repository.getSuperHeroesRemote()
+            .cachedIn(viewModelScope)
     }
 
     private suspend fun getProgress() {
@@ -57,10 +48,5 @@ class MainActivityViewModel(private val repository: MainRepository) : ViewModel(
             startProgress++
             delay(15)
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
     }
 }

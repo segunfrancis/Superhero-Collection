@@ -1,6 +1,7 @@
-package com.project.segunfrancis.core.domain
+package com.project.segunfrancis.superherocollection.framework.domain
 
 import com.google.gson.annotations.SerializedName
+import com.project.segunfrancis.superherocollection.framework.domain.AppearanceEntity
 import java.io.Serializable
 
 data class CharacterEntity(

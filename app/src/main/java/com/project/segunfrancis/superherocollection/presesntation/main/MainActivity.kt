@@ -5,31 +5,43 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.project.segunfrancis.core.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.databinding.ActivityMainBinding
-import com.project.segunfrancis.superherocollection.presesntation.Injection
+import com.project.segunfrancis.superherocollection.Injection
+import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.presesntation.detail.DetailActivity
 import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
 import com.project.segunfrancis.superherocollection.presesntation.utils.Resource
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainActivityViewModel
+    private var searchJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel = ViewModelProvider(
+        viewModel = ViewModelProvider(
             this,
             Injection.provideViewModelFactory()
         )
             .get(MainActivityViewModel::class.java)
 
         val adapter = SuperHeroRecyclerAdapter(this)
+        binding.superHeroRecyclerView.adapter = adapter
+        searchJob?.cancel()
+        searchJob = lifecycleScope.launch {
+            viewModel.fetchSuperHeroes().collect {
+                adapter.submitData(it)
+            }
+        }
 
         viewModel.superHeroes.observe(this, Observer { resource ->
             when (resource) {
@@ -37,9 +49,7 @@ class MainActivity : AppCompatActivity(), SuperHeroRecyclerAdapter.OnRecyclerIte
                     displaySnackBar(resource.message)
                 }
                 is Resource.Success -> {
-                    displaySnackBar(resource.result.characters[2].name)
-                    adapter.loadCharacters(resource.result.characters)
-                    binding.superHeroRecyclerView.adapter = adapter
+                    //adapter.loadCharacters(resource.result.characters)
                 }
                 is Resource.Error -> {
                     displaySnackBar(resource.message)
@@ -52,7 +62,7 @@ class MainActivity : AppCompatActivity(), SuperHeroRecyclerAdapter.OnRecyclerIte
         Snackbar.make(binding.mainConstraintLayout, message, Snackbar.LENGTH_LONG).show()
     }
 
-    override fun onItemClick(characterEntity: CharacterEntity) {
+    override fun onItemClick(characterEntity: CharacterEntity?) {
         startActivity(
             Intent(
                 this@MainActivity,
