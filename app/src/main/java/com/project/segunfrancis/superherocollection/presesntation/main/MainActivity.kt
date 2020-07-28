@@ -12,6 +12,7 @@ import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.presesntation.detail.DetailActivity
 import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
+import com.project.segunfrancis.superherocollection.presesntation.utils.MarginItemDecoration
 import com.project.segunfrancis.superherocollection.presesntation.utils.Resource
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -35,7 +36,10 @@ class MainActivity : AppCompatActivity(), SuperHeroRecyclerAdapter.OnRecyclerIte
             .get(MainActivityViewModel::class.java)
 
         val adapter = SuperHeroRecyclerAdapter(this)
-        binding.superHeroRecyclerView.adapter = adapter
+        binding.superHeroRecyclerView.addItemDecoration(MarginItemDecoration(16))
+        binding.superHeroRecyclerView.adapter = adapter.withLoadStateFooter(
+            footer = SuperHeroLoadStateAdapter { adapter.retry() }
+        )
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
             viewModel.fetchSuperHeroes().collect {
@@ -49,7 +53,7 @@ class MainActivity : AppCompatActivity(), SuperHeroRecyclerAdapter.OnRecyclerIte
                     displaySnackBar(resource.message)
                 }
                 is Resource.Success -> {
-                    //adapter.loadCharacters(resource.result.characters)
+
                 }
                 is Resource.Error -> {
                     displaySnackBar(resource.message)
