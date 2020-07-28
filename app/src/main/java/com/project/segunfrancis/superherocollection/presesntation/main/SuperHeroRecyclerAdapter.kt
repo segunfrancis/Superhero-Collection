@@ -9,7 +9,6 @@ import coil.api.load
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ItemSuperHeroBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
-import kotlinx.android.synthetic.main.item_super_hero.view.*
 
 /**
  * Created by SegunFrancis
@@ -40,7 +39,6 @@ class SuperHeroRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
             binding.itemSuperHeroNameTextView.text = item?.name
             binding.itemSuperHeroSlugTextView.text = item?.connections?.groupAffiliation
             binding.root.setOnClickListener { onClick.onItemClick(item) }
-            //itemView.setOnClickListener { onClick.onItemClick(item) }
         }
     }
 

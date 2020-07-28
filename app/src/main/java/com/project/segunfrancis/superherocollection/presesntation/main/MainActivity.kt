@@ -3,9 +3,10 @@ package com.project.segunfrancis.superherocollection.presesntation.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
 import com.project.segunfrancis.superherocollection.databinding.ActivityMainBinding
 import com.project.segunfrancis.superherocollection.Injection
@@ -13,7 +14,6 @@ import com.project.segunfrancis.superherocollection.framework.domain.CharacterEn
 import com.project.segunfrancis.superherocollection.presesntation.detail.DetailActivity
 import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
 import com.project.segunfrancis.superherocollection.presesntation.utils.MarginItemDecoration
-import com.project.segunfrancis.superherocollection.presesntation.utils.Resource
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -37,29 +37,28 @@ class MainActivity : AppCompatActivity(), SuperHeroRecyclerAdapter.OnRecyclerIte
 
         val adapter = SuperHeroRecyclerAdapter(this)
         binding.superHeroRecyclerView.addItemDecoration(MarginItemDecoration(16))
+        binding.retryButton.setOnClickListener { adapter.retry() }
         binding.superHeroRecyclerView.adapter = adapter.withLoadStateFooter(
             footer = SuperHeroLoadStateAdapter { adapter.retry() }
         )
+        adapter.addLoadStateListener { loadState ->
+            binding.superHeroRecyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+            // Display on any error, regardless of whether it came from RemoteMediator or PagingSource
+            val errorState = loadState.source.append as? LoadState.Error
+                ?: loadState.append as? LoadState.Error
+            errorState?.let {
+                displaySnackBar(it.error.localizedMessage!!)
+            }
+        }
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
             viewModel.fetchSuperHeroes().collect {
                 adapter.submitData(it)
             }
         }
-
-        viewModel.superHeroes.observe(this, Observer { resource ->
-            when (resource) {
-                is Resource.Loading -> {
-                    displaySnackBar(resource.message)
-                }
-                is Resource.Success -> {
-
-                }
-                is Resource.Error -> {
-                    displaySnackBar(resource.message)
-                }
-            }
-        })
     }
 
     private fun displaySnackBar(message: String) {
