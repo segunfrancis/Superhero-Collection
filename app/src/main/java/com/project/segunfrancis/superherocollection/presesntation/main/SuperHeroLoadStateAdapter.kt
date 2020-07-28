@@ -43,7 +43,6 @@ class SuperHeroLoadStateAdapter(private val retry: () -> Unit): LoadStateAdapter
         return SuperHeroLoadStateViewHolder.create(parent, retry)
     }
 
-
     class SuperHeroLoadStateViewHolder(
         private val binding: LoadStateFooterViewItemBinding,
         retry: () -> Unit
