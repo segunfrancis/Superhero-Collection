@@ -6,7 +6,6 @@ import androidx.core.view.iterator
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -41,15 +40,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initDestinationListener(navController: NavController) {
-        navController.addOnDestinationChangedListener { controller, destination, _ ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             // Enables all option menus in the nav bar
             binding.bottomNavView.menu.iterator().forEach { menuItem ->
                 menuItem.isEnabled = true
             }
 
-            /*when(destination.id) {
-
-            }*/
             val menu = binding.bottomNavView.menu.findItem(destination.id)
             menu?.isEnabled = false
         }

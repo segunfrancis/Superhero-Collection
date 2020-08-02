@@ -9,4 +9,8 @@
         <item name="snackbarStyle">@style/Widget.MaterialComponents.Snackbar.FullWidth</item>
     </style>
 
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/color1</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
 </resources>

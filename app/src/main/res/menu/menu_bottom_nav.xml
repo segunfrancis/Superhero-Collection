@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="Home"
-        android:icon="@drawable/ic_outline_home"/>
+        android:title="@string/home"
+        android:icon="@drawable/ic_home_selector"/>
 
     <item
         android:id="@+id/favoriteFragment"
-        android:title="Favourites"
-        android:icon="@drawable/ic_baseline_favorite_border"/>
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_favorite_selector"/>
 </menu>
