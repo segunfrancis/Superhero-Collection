@@ -27,6 +27,7 @@ class SuperHeroPagingSource(private val service: SuperHeroService) :
             if (position == null) {
                 response = service.getSuperHeroesRemote("")
                 heroes = response.characters
+                Log.d("SuperHeroPagingSource", "Position: $position")
                 position = 0
                 position += response.nextCursor
                 LoadResult.Page(
@@ -37,7 +38,7 @@ class SuperHeroPagingSource(private val service: SuperHeroService) :
             } else {
                 response = service.getSuperHeroesRemote(position)
                 heroes = response.characters
-                Log.d("SuperHeroPagingSource", "Size: ${heroes.size}")
+                Log.d("SuperHeroPagingSource", "Position: $position")
                 LoadResult.Page(
                     data = heroes,
                     prevKey = response.previousCursor,

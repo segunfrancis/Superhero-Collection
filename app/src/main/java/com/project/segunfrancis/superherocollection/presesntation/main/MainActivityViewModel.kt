@@ -8,8 +8,6 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.project.segunfrancis.superherocollection.framework.MainRepository
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
-import com.project.segunfrancis.superherocollection.framework.domain.SuperHeroEntity
-import com.project.segunfrancis.superherocollection.presesntation.utils.Resource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -19,10 +17,6 @@ import kotlinx.coroutines.launch
  */
 
 class MainActivityViewModel(private val repository: MainRepository) : ViewModel() {
-
-    private val _superHeroes = MutableLiveData<Resource<SuperHeroEntity>>()
-    val superHeroes: LiveData<Resource<SuperHeroEntity>>
-        get() = _superHeroes
 
     private val _progress = MutableLiveData<Float>()
     val progress: LiveData<Float>
@@ -37,7 +31,6 @@ class MainActivityViewModel(private val repository: MainRepository) : ViewModel(
     }
 
     fun fetchSuperHeroes(): Flow<PagingData<CharacterEntity>> {
-        _superHeroes.value = Resource.Loading("Loading...")
         return repository.getSuperHeroesRemote()
             .cachedIn(viewModelScope)
     }
