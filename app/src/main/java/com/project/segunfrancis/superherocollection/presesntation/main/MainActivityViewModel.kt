@@ -24,15 +24,26 @@ class MainActivityViewModel(private val repository: MainRepository) : ViewModel(
     private var startProgress = 0F
     private val endProgress = 65F
 
+    private val _scrollYPosition = MutableLiveData<Int>()
+    val scrollYPosition: LiveData<Int>
+        get() = _scrollYPosition
+
+    var superHeroesData: Flow<PagingData<CharacterEntity>>
+
     init {
         viewModelScope.launch {
             getProgress()
         }
+        superHeroesData = fetchSuperHeroes()
     }
 
-    fun fetchSuperHeroes(): Flow<PagingData<CharacterEntity>> {
+    private fun fetchSuperHeroes(): Flow<PagingData<CharacterEntity>> {
         return repository.getSuperHeroesRemote()
             .cachedIn(viewModelScope)
+    }
+
+    fun setScrollYPosition(position: Int) {
+        _scrollYPosition.value = position
     }
 
     private suspend fun getProgress() {

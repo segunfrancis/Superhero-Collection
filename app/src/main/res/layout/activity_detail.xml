@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".presesntation.detail.DetailActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:titleTextColor="@android:color/black" />
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.project.segunfrancis.customprogress.ArcProgress
         android:id="@+id/test_progress"
         android:layout_width="120dp"
@@ -14,10 +32,10 @@
         app:arc_finished_color="#444"
         app:arc_max="100"
         app:arc_stroke_width="12dp"
-        app:arc_text_color="@color/colorPrimaryDark"
+        app:arc_text_color="@color/color4"
         app:arc_unfinished_color="#AAA"
         app:arc_text_size="30sp"
         app:arc_bottom_text_size="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/app_bar_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,9 @@ package com.project.segunfrancis.superherocollection.presesntation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.view.iterator
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration =
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         )
             .get(MainActivityViewModel::class.java)
 
+        observeScrollPosition()
     }
 
     private fun initDestinationListener(navController: NavController) {
@@ -49,5 +53,17 @@ class MainActivity : AppCompatActivity() {
             val menu = binding.bottomNavView.menu.findItem(destination.id)
             menu?.isEnabled = false
         }
+    }
+
+    private fun observeScrollPosition() {
+        viewModel.scrollYPosition.observe(this, Observer { position ->
+            if (position == 0) {
+                binding.toolbar.elevation = 0f
+            } else {
+                // RecyclerView has left original position, elevate toolbar
+                binding.toolbar.elevation = 4f
+            }
+            Log.d("MainActivityScroll", "Position: $position")
+        })
     }
 }

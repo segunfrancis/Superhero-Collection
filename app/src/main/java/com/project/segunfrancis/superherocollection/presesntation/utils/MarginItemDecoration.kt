@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
  * Specifies equal margins for recycler view items
  */
 
-class MarginItemDecoration(private val spaceHeight: Int) : RecyclerView.ItemDecoration() {
+class MarginItemDecoration(private val spaceHeight: Int, private val topMargin: Int) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -19,7 +19,7 @@ class MarginItemDecoration(private val spaceHeight: Int) : RecyclerView.ItemDeco
     ) {
         with(outRect) {
             if (parent.getChildAdapterPosition(view) == 0 || parent.getChildAdapterPosition(view) == 1) {
-                top = spaceHeight
+                top = topMargin + spaceHeight
             }
             if (parent.getChildAdapterPosition(view) == 0 || parent.getChildAdapterPosition(view) % 2 == 0) {
                 /* Even numbered positions, i.e. views that are positioned on the left */
