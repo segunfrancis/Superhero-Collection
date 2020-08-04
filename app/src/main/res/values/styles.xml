@@ -13,4 +13,15 @@
         <item name="android:backgroundTint">@color/color1</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
+
+    <style name="ArcProgress">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="arc_angle">260</item>
+        <item name="arc_max">100</item>
+        <item name="arc_stroke_width">10dp</item>
+        <item name="arc_text_size">22sp</item>
+        <item name="arc_suffix_text_padding">-6dp</item>
+        <item name="arc_bottom_text_size">11sp</item>
+    </style>
 </resources>

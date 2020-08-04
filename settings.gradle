@@ -1,4 +1,3 @@
 rootProject.name='Superhero Collection'
 include ':app'
 include ':customprogress'
-include ':maxwidthlinearlayout'

@@ -32,8 +32,8 @@
         android:layout_height="140dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/dc_universe_header"
-        app:civ_border_width="4dp"
         app:civ_border_color="@color/color1"
+        app:civ_border_width="4dp"
         app:layout_constraintBottom_toBottomOf="@id/header_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header_image" />
@@ -42,25 +42,25 @@
         android:id="@+id/superHero_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/berkshire_swash"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_image"
         tools:text="Black Adam" />
 
     <ScrollView
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/superHero_image"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/superHero_image">
 
-        <com.project.segunfrancis.maxwidthlinearlayout.MaxWidthLinearLayout
-            android:layout_width="match_parent"
+        <com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="500dp"
             android:orientation="vertical">
@@ -68,24 +68,92 @@
             <TextView
                 android:id="@+id/superHero_bio_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="Power Stats" />
 
-            <com.project.segunfrancis.customprogress.ArcProgress
-                android:id="@+id/test_progress"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:arc_bottom_text="Speed"
-                app:arc_bottom_text_size="14sp"
-                app:arc_finished_color="#444"
-                app:arc_max="100"
-                app:arc_stroke_width="12dp"
-                app:arc_text_color="@color/color4"
-                app:arc_text_size="30sp"
-                app:arc_unfinished_color="#AAA"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/superHero_image" />
-        </com.project.segunfrancis.maxwidthlinearlayout.MaxWidthLinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
+                <com.project.segunfrancis.customprogress.ArcProgress
+                    android:id="@+id/combat_progress"
+                    style="@style/ArcProgress"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:arc_bottom_text="Combat"
+                    app:arc_finished_color="@color/combat"
+                    app:arc_text_color="@color/combat"
+                    app:arc_unfinished_color="@color/combat_unfinished" />
+
+                <com.project.segunfrancis.customprogress.ArcProgress
+                    android:id="@+id/power_progress"
+                    style="@style/ArcProgress"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:arc_bottom_text="Power"
+                    app:arc_finished_color="@color/power"
+                    app:arc_text_color="@color/power"
+                    app:arc_unfinished_color="@color/power_unfinished" />
+
+                <com.project.segunfrancis.customprogress.ArcProgress
+                    android:id="@+id/speed_progress"
+                    style="@style/ArcProgress"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:arc_bottom_text="Speed"
+                    app:arc_finished_color="@color/speed"
+                    app:arc_text_color="@color/speed"
+                    app:arc_unfinished_color="@color/speed_unfinished" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.project.segunfrancis.customprogress.ArcProgress
+                    android:id="@+id/intelligence_progress"
+                    style="@style/ArcProgress"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:arc_bottom_text="Intelligence"
+                    app:arc_finished_color="@color/intelligence"
+                    app:arc_text_color="@color/color4"
+                    app:arc_unfinished_color="@color/intelligence_unfinished" />
+
+                <com.project.segunfrancis.customprogress.ArcProgress
+                    android:id="@+id/durability_progress"
+                    style="@style/ArcProgress"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:arc_bottom_text="Durability"
+                    app:arc_finished_color="@color/durability"
+                    app:arc_text_color="@color/durability"
+                    app:arc_unfinished_color="@color/durability_unfinished" />
+
+                <com.project.segunfrancis.customprogress.ArcProgress
+                    android:id="@+id/strength_progress"
+                    style="@style/ArcProgress"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:arc_progress="100"
+                    app:arc_bottom_text="Strength"
+                    app:arc_finished_color="@color/strength"
+                    app:arc_text_color="@color/strength"
+                    app:arc_unfinished_color="@color/strength_unfinished" />
+            </LinearLayout>
+        </com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

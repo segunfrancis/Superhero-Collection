@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.project.segunfrancis.maxwidthlinearlayout;
+package com.project.segunfrancis.superherocollection.presesntation.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,9 +23,10 @@ import android.widget.LinearLayout;
 
 /**
  * Created by SegunFrancis
+ * <p>
  * A simple {@link LinearLayout} subclass that has a maxWidth
  */
-class MaxWidthLinearLayout extends LinearLayout {
+public class MaxWidthLinearLayout extends LinearLayout {
     private static final int[] ATTRS = {
             android.R.attr.maxWidth
     };
