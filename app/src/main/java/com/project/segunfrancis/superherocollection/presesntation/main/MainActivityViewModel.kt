@@ -18,12 +18,6 @@ import kotlinx.coroutines.launch
 
 class MainActivityViewModel(private val repository: MainRepository) : ViewModel() {
 
-    private val _progress = MutableLiveData<Float>()
-    val progress: LiveData<Float>
-        get() = _progress
-    private var startProgress = 0F
-    private val endProgress = 65F
-
     private val _scrollYPosition = MutableLiveData<Int>()
     val scrollYPosition: LiveData<Int>
         get() = _scrollYPosition
@@ -31,9 +25,6 @@ class MainActivityViewModel(private val repository: MainRepository) : ViewModel(
     var superHeroesData: Flow<PagingData<CharacterEntity>>
 
     init {
-        viewModelScope.launch {
-            getProgress()
-        }
         superHeroesData = fetchSuperHeroes()
     }
 
@@ -44,13 +35,5 @@ class MainActivityViewModel(private val repository: MainRepository) : ViewModel(
 
     fun setScrollYPosition(position: Int) {
         _scrollYPosition.value = position
-    }
-
-    private suspend fun getProgress() {
-        while (startProgress < endProgress) {
-            _progress.value = startProgress
-            startProgress++
-            delay(15)
-        }
     }
 }

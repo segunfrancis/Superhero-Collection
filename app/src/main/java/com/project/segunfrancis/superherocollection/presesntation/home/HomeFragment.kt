@@ -2,7 +2,6 @@ package com.project.segunfrancis.superherocollection.presesntation.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
@@ -21,17 +19,16 @@ import com.project.segunfrancis.superherocollection.presesntation.detail.DetailA
 import com.project.segunfrancis.superherocollection.presesntation.main.MainActivityViewModel
 import com.project.segunfrancis.superherocollection.presesntation.main.SuperHeroLoadStateAdapter
 import com.project.segunfrancis.superherocollection.presesntation.main.SuperHeroRecyclerAdapter
-import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants
+import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
 import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.convertDpToPx
+import com.project.segunfrancis.superherocollection.presesntation.utils.ExtensionFunctions.computeScrollPosition
 import com.project.segunfrancis.superherocollection.presesntation.utils.MarginItemDecoration
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-
 /**
  * A simple [Fragment] subclass.
- *
  */
 
 class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
@@ -55,7 +52,8 @@ class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
             MainActivityViewModel::class.java
         )
 
-        computeScrollPosition()
+        // Compute scroll position of RecyclerView
+        binding.superHeroRecyclerView.computeScrollPosition(viewModel)
 
         val adapter = SuperHeroRecyclerAdapter(this)
         binding.superHeroRecyclerView.addItemDecoration(
@@ -100,19 +98,7 @@ class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
             Intent(
                 requireContext(),
                 DetailActivity::class.java
-            ).putExtra(AppConstants.INTENT_KEY, characterEntity)
+            ).putExtra(INTENT_KEY, characterEntity)
         )
     }
-
-    private fun computeScrollPosition() {
-        var overallYScroll = 0
-        binding.superHeroRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                overallYScroll += dy
-                viewModel.setScrollYPosition(overallYScroll)
-                Log.d("addOnScrollListener", "Overall Y: $overallYScroll")
-            }
-        })
-    }
-
 }
