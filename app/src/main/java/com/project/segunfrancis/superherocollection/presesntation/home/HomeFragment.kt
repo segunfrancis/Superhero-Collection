@@ -21,7 +21,7 @@ import com.project.segunfrancis.superherocollection.presesntation.main.SuperHero
 import com.project.segunfrancis.superherocollection.presesntation.main.SuperHeroRecyclerAdapter
 import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
 import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.convertDpToPx
-import com.project.segunfrancis.superherocollection.presesntation.utils.ExtensionFunctions.computeScrollPosition
+import com.project.segunfrancis.superherocollection.presesntation.utils.computeScrollPosition
 import com.project.segunfrancis.superherocollection.presesntation.utils.MarginItemDecoration
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect

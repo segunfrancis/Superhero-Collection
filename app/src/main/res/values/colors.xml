@@ -10,8 +10,8 @@
 
     <!-- Power Stats colours -->
     <color name="power">#2E42E4</color>
-    <color name="power_unfinished">#8691EA</color>
-    <color name="intelligence">#FFC4C4</color>
+    <color name="power_unfinished">#949EEF</color>
+    <color name="intelligence">#F87D7D</color>
     <color name="intelligence_unfinished">#D8D8D8</color>
     <color name="combat">#E43B48</color>
     <color name="combat_unfinished">#EDA1A7</color>

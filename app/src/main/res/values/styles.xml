@@ -9,6 +9,10 @@
         <item name="snackbarStyle">@style/Widget.MaterialComponents.Snackbar.FullWidth</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/color1</item>
         <item name="android:textColor">@color/colorPrimary</item>
@@ -20,8 +24,8 @@
         <item name="arc_angle">260</item>
         <item name="arc_max">100</item>
         <item name="arc_stroke_width">10dp</item>
-        <item name="arc_text_size">22sp</item>
-        <item name="arc_suffix_text_padding">-6dp</item>
+        <item name="arc_text_size">20sp</item>
+        <item name="arc_suffix_text_padding">-12dp</item>
         <item name="arc_bottom_text_size">11sp</item>
     </style>
 </resources>
