@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_detail">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout
         android:layout_width="match_parent"
@@ -15,103 +14,309 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/superHero_name_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/berkshire_swash"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:layout_gravity="start"
-            tools:text="Black Adam" />
+            android:text="Power Stats"
+            android:textSize="22sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardElevation="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <TextView
+                    android:id="@+id/intelligence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Intelligence"
+                    app:layout_constraintBottom_toTopOf="@+id/strength"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.skydoves.progressview.ProgressView
+                    android:id="@+id/intelligence_progressView"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/intelligence"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="@+id/intelligence"
+                    app:progressView_animation="decelerate"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@color/durability_unfinished"
+                    app:progressView_colorProgress="@color/intelligence"
+                    app:progressView_highlightAlpha="500"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="horizontal"
+                    app:progressView_progress="50"
+                    app:progressView_radius="8dp" />
+
+                <TextView
+                    android:id="@+id/strength"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Strength"
+                    app:layout_constraintBottom_toTopOf="@id/speed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/intelligence" />
+
+                <com.skydoves.progressview.ProgressView
+                    android:id="@+id/strength_progressView"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/strength"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="@+id/strength"
+                    app:progressView_animation="decelerate"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@color/durability_unfinished"
+                    app:progressView_colorProgress="@color/strength"
+                    app:progressView_highlightAlpha="500"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="horizontal"
+                    app:progressView_progress="100"
+                    app:progressView_radius="8dp" />
+
+                <TextView
+                    android:id="@+id/speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Speed"
+                    app:layout_constraintBottom_toTopOf="@id/combat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/strength" />
+
+                <com.skydoves.progressview.ProgressView
+                    android:id="@+id/speed_progressView"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/speed"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="@+id/speed"
+                    app:progressView_animation="decelerate"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@color/durability_unfinished"
+                    app:progressView_colorProgress="@color/speed"
+                    app:progressView_highlightAlpha="500"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="horizontal"
+                    app:progressView_progress="90"
+                    app:progressView_radius="8dp" />
+
+                <TextView
+                    android:id="@+id/combat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Combat"
+                    app:layout_constraintBottom_toTopOf="@id/power"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/speed" />
+
+                <com.skydoves.progressview.ProgressView
+                    android:id="@+id/combat_progressView"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/combat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="@+id/combat"
+                    app:progressView_animation="decelerate"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@color/durability_unfinished"
+                    app:progressView_colorProgress="@color/combat"
+                    app:progressView_highlightAlpha="500"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="horizontal"
+                    app:progressView_progress="20"
+                    app:progressView_radius="8dp" />
+
+                <TextView
+                    android:id="@+id/power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Power"
+                    app:layout_constraintBottom_toTopOf="@id/durability"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/combat" />
+
+                <com.skydoves.progressview.ProgressView
+                    android:id="@+id/power_progressView"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/power"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="@+id/power"
+                    app:progressView_animation="decelerate"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@color/durability_unfinished"
+                    app:progressView_colorProgress="@color/power"
+                    app:progressView_highlightAlpha="500"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="horizontal"
+                    app:progressView_progress="80"
+                    app:progressView_radius="8dp" />
+
+                <TextView
+                    android:id="@+id/durability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Durability"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/power" />
+
+                <com.skydoves.progressview.ProgressView
+                    android:id="@+id/durability_progressView"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/durability"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="@+id/durability"
+                    app:progressView_animation="decelerate"
+                    app:progressView_autoAnimate="true"
+                    app:progressView_colorBackground="@color/durability_unfinished"
+                    app:progressView_colorProgress="@color/durability"
+                    app:progressView_highlightAlpha="500"
+                    app:progressView_max="100"
+                    app:progressView_min="0"
+                    app:progressView_orientation="horizontal"
+                    app:progressView_progress="40"
+                    app:progressView_radius="8dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.26" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/superHero_bio_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Power Stats" />
+            android:fontFamily="@font/berkshire_swash"
+            android:text="Biography"
+            android:textSize="22sp" />
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_margin="12dp"
+            app:cardElevation="8dp">
 
-            <com.project.segunfrancis.customprogress.ArcProgress
-                android:id="@+id/combat_progress"
-                style="@style/ArcProgress"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:arc_bottom_text="Combat"
-                app:arc_finished_color="@color/combat"
-                app:arc_text_color="@color/combat"
-                app:arc_unfinished_color="@color/combat_unfinished" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
 
-            <com.project.segunfrancis.customprogress.ArcProgress
-                android:id="@+id/power_progress"
-                style="@style/ArcProgress"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:arc_bottom_text="Power"
-                app:arc_finished_color="@color/power"
-                app:arc_text_color="@color/power"
-                app:arc_unfinished_color="@color/power_unfinished" />
+                <TextView
+                    android:id="@+id/fullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Full Name"
+                    app:layout_constraintBottom_toTopOf="@id/aliases"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.project.segunfrancis.customprogress.ArcProgress
-                android:id="@+id/speed_progress"
-                style="@style/ArcProgress"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:arc_bottom_text="Speed"
-                app:arc_finished_color="@color/speed"
-                app:arc_text_color="@color/speed"
-                app:arc_unfinished_color="@color/speed_unfinished" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/fullName_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Cat Woman"
+                    app:layout_constraintStart_toEndOf="@id/guideline2"
+                    app:layout_constraintTop_toTopOf="@id/fullName"
+                    app:layout_constraintBottom_toBottomOf="@id/fullName"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/aliases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Aliases"
+                    app:layout_constraintBottom_toTopOf="@id/place_of_birth"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fullName" />
 
-            <com.project.segunfrancis.customprogress.ArcProgress
-                android:id="@+id/intelligence_progress"
-                style="@style/ArcProgress"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:arc_bottom_text="Intelligence"
-                app:arc_finished_color="@color/intelligence"
-                app:arc_text_color="@color/color4"
-                app:arc_unfinished_color="@color/intelligence_unfinished" />
+                <TextView
+                    android:id="@+id/aliases_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:layout_constraintBottom_toBottomOf="@id/aliases"
+                    app:layout_constraintStart_toEndOf="@id/guideline2"
+                    app:layout_constraintTop_toTopOf="@id/aliases"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Cat Woman" />
 
-            <com.project.segunfrancis.customprogress.ArcProgress
-                android:id="@+id/durability_progress"
-                style="@style/ArcProgress"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:arc_bottom_text="Durability"
-                app:arc_finished_color="@color/durability"
-                app:arc_text_color="@color/durability"
-                app:arc_unfinished_color="@color/durability_unfinished" />
+                <TextView
+                    android:id="@+id/place_of_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Place of Birth"
+                    app:layout_constraintBottom_toTopOf="@id/alignment"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aliases" />
 
-            <com.project.segunfrancis.customprogress.ArcProgress
-                android:id="@+id/strength_progress"
-                style="@style/ArcProgress"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:arc_bottom_text="Strength"
-                app:arc_finished_color="@color/strength"
-                app:arc_text_color="@color/strength"
-                app:arc_unfinished_color="@color/strength_unfinished" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/place_of_birth_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Cat Woman"
+                    app:layout_constraintTop_toTopOf="@id/place_of_birth"
+                    app:layout_constraintBottom_toBottomOf="@id/place_of_birth"
+                    app:layout_constraintStart_toEndOf="@id/guideline2"/>
+
+                <TextView
+                    android:id="@+id/alignment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alignment"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/place_of_birth" />
+
+                <TextView
+                    android:id="@+id/alignment_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Cat Woman"
+                    app:layout_constraintTop_toTopOf="@id/alignment"
+                    app:layout_constraintBottom_toBottomOf="@id/alignment"
+                    app:layout_constraintStart_toEndOf="@id/guideline2"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".26" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
     </com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout>
 </androidx.core.widget.NestedScrollView>

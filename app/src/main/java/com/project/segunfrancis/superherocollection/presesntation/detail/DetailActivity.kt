@@ -2,14 +2,11 @@ package com.project.segunfrancis.superherocollection.presesntation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.lifecycleScope
 import coil.api.load
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ActivityDetailBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
-import com.project.segunfrancis.superherocollection.presesntation.utils.testFun
-import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
 
@@ -25,25 +22,6 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val character = intent.getSerializableExtra(INTENT_KEY) as CharacterEntity
-
-        lifecycleScope.launch {
-            binding.include.combatProgress.testFun(character.powerstats.combat.toFloat())
-        }
-        lifecycleScope.launch {
-            binding.include.powerProgress.testFun(character.powerstats.power.toFloat())
-        }
-        lifecycleScope.launch {
-            binding.include.strengthProgress.testFun(character.powerstats.strength.toFloat())
-        }
-        lifecycleScope.launch {
-            binding.include.durabilityProgress.testFun(character.powerstats.durability.toFloat())
-        }
-        lifecycleScope.launch {
-            binding.include.speedProgress.testFun(character.powerstats.speed.toFloat())
-        }
-        lifecycleScope.launch {
-            binding.include.intelligenceProgress.testFun(character.powerstats.intelligence.toFloat())
-        }
         populateData(character)
     }
 
@@ -52,7 +30,33 @@ class DetailActivity : AppCompatActivity() {
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_broken_image)
         }
-        binding.include.superHeroNameText.text = character.name
-        binding.include.superHeroBioText.text = character.connections.groupAffiliation
+        binding.include.combatProgressView.apply {
+            progress = character.powerstats.combat.toFloat()
+            labelText = character.powerstats.combat.toString().plus("%")
+        }
+        binding.include.powerProgressView.apply {
+            progress = character.powerstats.power.toFloat()
+            labelText = character.powerstats.power.toString().plus("%")
+        }
+        binding.include.intelligenceProgressView.apply {
+            progress = character.powerstats.intelligence.toFloat()
+            labelText = character.powerstats.intelligence.toString().plus("%")
+        }
+        binding.include.durabilityProgressView.apply {
+            progress = character.powerstats.durability.toFloat()
+            labelText = character.powerstats.durability.toString().plus("%")
+        }
+        binding.include.strengthProgressView.apply {
+            progress = character.powerstats.strength.toFloat()
+            labelText = character.powerstats.strength.toString().plus("%")
+        }
+        binding.include.speedProgressView.apply {
+            progress = character.powerstats.speed.toFloat()
+            labelText = character.powerstats.speed.toString().plus("%")
+        }
+        binding.include.fullNameTextView.text = character.biography.fullName
+        binding.include.aliasesTextView.text = character.biography.aliases[0]
+        binding.include.placeOfBirthTextView.text = character.biography.placeOfBirth
+        binding.include.alignmentTextView.text = character.biography.alignment
     }
 }
