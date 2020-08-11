@@ -26,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun populateData(character: CharacterEntity) {
-        binding.superHeroImage.load(character.images.md) {
+        binding.include.superHeroImage.load(character.images.md) {
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_broken_image)
         }
@@ -54,9 +54,16 @@ class DetailActivity : AppCompatActivity() {
             progress = character.powerstats.speed.toFloat()
             labelText = character.powerstats.speed.toString().plus("%")
         }
+        binding.toolbar.title = character.name
         binding.include.fullNameTextView.text = character.biography.fullName
         binding.include.aliasesTextView.text = character.biography.aliases[0]
         binding.include.placeOfBirthTextView.text = character.biography.placeOfBirth
         binding.include.alignmentTextView.text = character.biography.alignment
+
+        binding.include.occupationTextView.text = character.work.occupation
+        binding.include.baseTextView.text = character.work.base
+
+        binding.include.groupAffiliationTextView.text = character.connections.groupAffiliation
+        binding.include.relativesTextView.text = character.connections.relatives
     }
 }

@@ -3,15 +3,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="?attr/actionBarSize"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:maxWidth="500dp"
+        android:maxWidth="540dp"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/superHero_image"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@drawable/dc_universe_header"
+                app:civ_border_color="@color/color1"
+                app:civ_border_width="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender: "
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/gender_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/textView"
+                        tools:text="Male" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Eye Colour: "
+                        tools:layout_editor_absoluteX="210dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hair Colour: "
+                        tools:layout_editor_absoluteX="175dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Race: " />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Height: " />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="5.6ft" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight: " />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="56lb" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -20,11 +114,7 @@
             android:text="Power Stats"
             android:textSize="22sp" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            app:cardElevation="8dp">
+        <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -43,22 +133,15 @@
 
                 <com.skydoves.progressview.ProgressView
                     android:id="@+id/intelligence_progressView"
+                    style="@style/ProgressViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/intelligence"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toTopOf="@+id/intelligence"
-                    app:progressView_animation="decelerate"
-                    app:progressView_autoAnimate="true"
                     app:progressView_colorBackground="@color/durability_unfinished"
-                    app:progressView_colorProgress="@color/intelligence"
-                    app:progressView_highlightAlpha="500"
-                    app:progressView_max="100"
-                    app:progressView_min="0"
-                    app:progressView_orientation="horizontal"
-                    app:progressView_progress="50"
-                    app:progressView_radius="8dp" />
+                    app:progressView_colorProgress="@color/intelligence" />
 
                 <TextView
                     android:id="@+id/strength"
@@ -72,22 +155,15 @@
 
                 <com.skydoves.progressview.ProgressView
                     android:id="@+id/strength_progressView"
+                    style="@style/ProgressViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/strength"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toTopOf="@+id/strength"
-                    app:progressView_animation="decelerate"
-                    app:progressView_autoAnimate="true"
                     app:progressView_colorBackground="@color/durability_unfinished"
-                    app:progressView_colorProgress="@color/strength"
-                    app:progressView_highlightAlpha="500"
-                    app:progressView_max="100"
-                    app:progressView_min="0"
-                    app:progressView_orientation="horizontal"
-                    app:progressView_progress="100"
-                    app:progressView_radius="8dp" />
+                    app:progressView_colorProgress="@color/strength" />
 
                 <TextView
                     android:id="@+id/speed"
@@ -101,22 +177,15 @@
 
                 <com.skydoves.progressview.ProgressView
                     android:id="@+id/speed_progressView"
+                    style="@style/ProgressViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/speed"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toTopOf="@+id/speed"
-                    app:progressView_animation="decelerate"
-                    app:progressView_autoAnimate="true"
                     app:progressView_colorBackground="@color/durability_unfinished"
-                    app:progressView_colorProgress="@color/speed"
-                    app:progressView_highlightAlpha="500"
-                    app:progressView_max="100"
-                    app:progressView_min="0"
-                    app:progressView_orientation="horizontal"
-                    app:progressView_progress="90"
-                    app:progressView_radius="8dp" />
+                    app:progressView_colorProgress="@color/speed" />
 
                 <TextView
                     android:id="@+id/combat"
@@ -130,22 +199,15 @@
 
                 <com.skydoves.progressview.ProgressView
                     android:id="@+id/combat_progressView"
+                    style="@style/ProgressViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/combat"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toTopOf="@+id/combat"
-                    app:progressView_animation="decelerate"
-                    app:progressView_autoAnimate="true"
                     app:progressView_colorBackground="@color/durability_unfinished"
-                    app:progressView_colorProgress="@color/combat"
-                    app:progressView_highlightAlpha="500"
-                    app:progressView_max="100"
-                    app:progressView_min="0"
-                    app:progressView_orientation="horizontal"
-                    app:progressView_progress="20"
-                    app:progressView_radius="8dp" />
+                    app:progressView_colorProgress="@color/combat" />
 
                 <TextView
                     android:id="@+id/power"
@@ -159,22 +221,15 @@
 
                 <com.skydoves.progressview.ProgressView
                     android:id="@+id/power_progressView"
+                    style="@style/ProgressViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/power"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toTopOf="@+id/power"
-                    app:progressView_animation="decelerate"
-                    app:progressView_autoAnimate="true"
                     app:progressView_colorBackground="@color/durability_unfinished"
-                    app:progressView_colorProgress="@color/power"
-                    app:progressView_highlightAlpha="500"
-                    app:progressView_max="100"
-                    app:progressView_min="0"
-                    app:progressView_orientation="horizontal"
-                    app:progressView_progress="80"
-                    app:progressView_radius="8dp" />
+                    app:progressView_colorProgress="@color/power" />
 
                 <TextView
                     android:id="@+id/durability"
@@ -187,29 +242,19 @@
 
                 <com.skydoves.progressview.ProgressView
                     android:id="@+id/durability_progressView"
+                    style="@style/ProgressViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/durability"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toTopOf="@+id/durability"
-                    app:progressView_animation="decelerate"
-                    app:progressView_autoAnimate="true"
                     app:progressView_colorBackground="@color/durability_unfinished"
-                    app:progressView_colorProgress="@color/durability"
-                    app:progressView_highlightAlpha="500"
-                    app:progressView_max="100"
-                    app:progressView_min="0"
-                    app:progressView_orientation="horizontal"
-                    app:progressView_progress="40"
-                    app:progressView_radius="8dp" />
+                    app:progressView_colorProgress="@color/durability" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.26" />
+                    style="@style/GuideLineStyle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -221,11 +266,7 @@
             android:text="Biography"
             android:textSize="22sp" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            app:cardElevation="8dp">
+        <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -246,10 +287,10 @@
                     android:id="@+id/fullName_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Cat Woman"
+                    app:layout_constraintBottom_toBottomOf="@id/fullName"
                     app:layout_constraintStart_toEndOf="@id/guideline2"
                     app:layout_constraintTop_toTopOf="@id/fullName"
-                    app:layout_constraintBottom_toBottomOf="@id/fullName"/>
+                    tools:text="Cat Woman" />
 
                 <TextView
                     android:id="@+id/aliases"
@@ -268,9 +309,9 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     app:layout_constraintBottom_toBottomOf="@id/aliases"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/guideline2"
                     app:layout_constraintTop_toTopOf="@id/aliases"
-                    app:layout_constraintEnd_toEndOf="parent"
                     tools:text="Cat Woman" />
 
                 <TextView
@@ -287,10 +328,10 @@
                     android:id="@+id/place_of_birth_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Cat Woman"
-                    app:layout_constraintTop_toTopOf="@id/place_of_birth"
                     app:layout_constraintBottom_toBottomOf="@id/place_of_birth"
-                    app:layout_constraintStart_toEndOf="@id/guideline2"/>
+                    app:layout_constraintStart_toEndOf="@id/guideline2"
+                    app:layout_constraintTop_toTopOf="@id/place_of_birth"
+                    tools:text="Cat Woman" />
 
                 <TextView
                     android:id="@+id/alignment"
@@ -305,17 +346,139 @@
                     android:id="@+id/alignment_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Cat Woman"
-                    app:layout_constraintTop_toTopOf="@id/alignment"
                     app:layout_constraintBottom_toBottomOf="@id/alignment"
-                    app:layout_constraintStart_toEndOf="@id/guideline2"/>
+                    app:layout_constraintStart_toEndOf="@id/guideline2"
+                    app:layout_constraintTop_toTopOf="@id/alignment"
+                    tools:text="Cat Woman" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"
+                    style="@style/GuideLineStyle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/berkshire_swash"
+            android:text="Work"
+            android:textSize="22sp" />
+
+        <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <TextView
+                    android:id="@+id/occupation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".26" />
+                    android:layout_marginBottom="4dp"
+                    android:text="Occupation"
+                    app:layout_constraintBottom_toTopOf="@id/base"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/occupation_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/occupation"
+                    app:layout_constraintStart_toEndOf="@id/guideline3"
+                    app:layout_constraintTop_toTopOf="@id/occupation"
+                    tools:text="Cat Woman" />
+
+                <TextView
+                    android:id="@+id/base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Base"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/occupation" />
+
+                <TextView
+                    android:id="@+id/base_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:layout_constraintBottom_toBottomOf="@id/base"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline3"
+                    app:layout_constraintTop_toTopOf="@id/base"
+                    tools:text="Cat Woman" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline3"
+                    style="@style/GuideLineStyle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/berkshire_swash"
+            android:text="Connections"
+            android:textSize="22sp" />
+
+        <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <TextView
+                    android:id="@+id/groupAffiliation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Group Affiliation"
+                    app:layout_constraintBottom_toTopOf="@id/relatives"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/groupAffiliation_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:layout_constraintBottom_toBottomOf="@id/groupAffiliation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline4"
+                    app:layout_constraintTop_toTopOf="@id/groupAffiliation"
+                    tools:text="Cat Woman" />
+
+                <TextView
+                    android:id="@+id/relatives"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Relatives"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/groupAffiliation" />
+
+                <TextView
+                    android:id="@+id/relatives_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:layout_constraintBottom_toBottomOf="@id/relatives"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline4"
+                    app:layout_constraintTop_toTopOf="@id/relatives"
+                    tools:text="Cat Woman" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline4"
+                    style="@style/GuideLineStyle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
     </com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout>

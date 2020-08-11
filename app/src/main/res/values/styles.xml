@@ -18,14 +18,27 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="ArcProgress">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">100dp</item>
-        <item name="arc_angle">260</item>
-        <item name="arc_max">100</item>
-        <item name="arc_stroke_width">10dp</item>
-        <item name="arc_text_size">20sp</item>
-        <item name="arc_suffix_text_padding">-12dp</item>
-        <item name="arc_bottom_text_size">11sp</item>
+    <style name="ProgressViewStyle">
+        <item name="progressView_animation">decelerate</item>
+        <item name="progressView_autoAnimate">true</item>
+        <item name="progressView_highlightAlpha">500</item>
+        <item name="progressView_max">100</item>
+        <item name="progressView_min">0</item>
+        <item name="progressView_orientation">horizontal</item>
+        <item name="progressView_radius">8dp</item>
+    </style>
+
+    <style name="CardViewStyle">
+        <item name="cardElevation">6dp</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="GuideLineStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="layout_constraintGuide_percent">0.3</item>
     </style>
 </resources>
