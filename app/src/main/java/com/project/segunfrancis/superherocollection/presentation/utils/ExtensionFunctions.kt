@@ -1,7 +1,7 @@
-package com.project.segunfrancis.superherocollection.presesntation.utils
+package com.project.segunfrancis.superherocollection.presentation.utils
 
 import androidx.recyclerview.widget.RecyclerView
-import com.project.segunfrancis.superherocollection.presesntation.main.MainActivityViewModel
+import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
 import androidx.appcompat.widget.Toolbar
 
 /**

@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.framework.remote.SuperHeroService
-import com.project.segunfrancis.superherocollection.presesntation.SuperHeroPagingSource
+import com.project.segunfrancis.superherocollection.presentation.SuperHeroPagingSource
 import kotlinx.coroutines.flow.Flow
 
 /**

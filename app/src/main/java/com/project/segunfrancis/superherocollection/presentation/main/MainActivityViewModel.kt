@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation.main
+package com.project.segunfrancis.superherocollection.presentation.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,9 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.project.segunfrancis.superherocollection.framework.MainRepository
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 /**
  * Created by SegunFrancis

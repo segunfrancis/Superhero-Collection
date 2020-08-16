@@ -7,7 +7,7 @@
     android:paddingTop="?attr/actionBarSize"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout
+    <com.project.segunfrancis.superherocollection.presentation.utils.MaxWidthLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -481,5 +481,5 @@
                     style="@style/GuideLineStyle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
-    </com.project.segunfrancis.superherocollection.presesntation.utils.MaxWidthLinearLayout>
+    </com.project.segunfrancis.superherocollection.presentation.utils.MaxWidthLinearLayout>
 </androidx.core.widget.NestedScrollView>

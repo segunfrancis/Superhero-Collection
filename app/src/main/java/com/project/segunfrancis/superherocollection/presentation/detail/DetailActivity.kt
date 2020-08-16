@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation.detail
+package com.project.segunfrancis.superherocollection.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import coil.api.load
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ActivityDetailBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
-import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
+import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.INTENT_KEY
 
 class DetailActivity : AppCompatActivity() {
 

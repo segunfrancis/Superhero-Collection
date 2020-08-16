@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation.home
+package com.project.segunfrancis.superherocollection.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,14 +15,14 @@ import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.FragmentHomeBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
-import com.project.segunfrancis.superherocollection.presesntation.detail.DetailActivity
-import com.project.segunfrancis.superherocollection.presesntation.main.MainActivityViewModel
-import com.project.segunfrancis.superherocollection.presesntation.main.SuperHeroLoadStateAdapter
-import com.project.segunfrancis.superherocollection.presesntation.main.SuperHeroRecyclerAdapter
-import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.INTENT_KEY
-import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.convertDpToPx
-import com.project.segunfrancis.superherocollection.presesntation.utils.computeScrollPosition
-import com.project.segunfrancis.superherocollection.presesntation.utils.MarginItemDecoration
+import com.project.segunfrancis.superherocollection.presentation.detail.DetailActivity
+import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
+import com.project.segunfrancis.superherocollection.presentation.main.SuperHeroLoadStateAdapter
+import com.project.segunfrancis.superherocollection.presentation.main.SuperHeroRecyclerAdapter
+import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.INTENT_KEY
+import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.convertDpToPx
+import com.project.segunfrancis.superherocollection.presentation.utils.computeScrollPosition
+import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

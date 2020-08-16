@@ -3,7 +3,7 @@ package com.project.segunfrancis.superherocollection
 import androidx.lifecycle.ViewModelProvider
 import com.project.segunfrancis.superherocollection.framework.MainRepository
 import com.project.segunfrancis.superherocollection.framework.remote.SuperHeroService
-import com.project.segunfrancis.superherocollection.presesntation.SuperHeroViewModelFactory
+import com.project.segunfrancis.superherocollection.presentation.SuperHeroViewModelFactory
 
 /**
  * Created by SegunFrancis

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.project.segunfrancis.superherocollection.presesntation.utils;
+package com.project.segunfrancis.superherocollection.presentation.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;

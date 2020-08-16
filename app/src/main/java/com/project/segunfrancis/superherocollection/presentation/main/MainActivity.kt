@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation.main
+package com.project.segunfrancis.superherocollection.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

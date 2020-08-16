@@ -1,9 +1,9 @@
-package com.project.segunfrancis.superherocollection.presesntation
+package com.project.segunfrancis.superherocollection.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.project.segunfrancis.superherocollection.framework.MainRepository
-import com.project.segunfrancis.superherocollection.presesntation.main.MainActivityViewModel
+import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
 
 /**
  * Created by SegunFrancis

@@ -1,7 +1,7 @@
 package com.project.segunfrancis.superherocollection.framework.remote
 
 import com.project.segunfrancis.superherocollection.framework.domain.SuperHeroEntity
-import com.project.segunfrancis.superherocollection.presesntation.utils.AppConstants.BASE_URL
+import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level

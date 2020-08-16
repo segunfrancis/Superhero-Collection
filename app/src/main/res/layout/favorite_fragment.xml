@@ -6,7 +6,7 @@
     android:layout_marginTop="?attr/actionBarSize"
     android:layout_marginBottom="?attr/actionBarSize"
     android:background="@android:color/white"
-    tools:context=".presesntation.favorite.FavoriteFragment">
+    tools:context=".presentation.favorite.FavoriteFragment">
 
     <TextView
         android:layout_width="match_parent"

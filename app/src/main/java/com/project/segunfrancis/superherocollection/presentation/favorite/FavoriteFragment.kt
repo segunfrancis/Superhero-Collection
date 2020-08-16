@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation.favorite
+package com.project.segunfrancis.superherocollection.presentation.favorite
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

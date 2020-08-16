@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation.utils
+package com.project.segunfrancis.superherocollection.presentation.utils
 
 /**
  * Created by SegunFrancis

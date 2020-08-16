@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation
+package com.project.segunfrancis.superherocollection.presentation
 
 import android.util.Log
 import androidx.paging.PagingSource

@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.presesntation.main
+package com.project.segunfrancis.superherocollection.presentation.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
