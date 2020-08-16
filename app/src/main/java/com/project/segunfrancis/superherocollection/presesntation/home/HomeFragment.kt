@@ -35,7 +35,11 @@ class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
 
     private lateinit var binding: FragmentHomeBinding
     private var searchJob: Job? = null
-    private lateinit var viewModel: MainActivityViewModel
+    private val viewModel: MainActivityViewModel by lazy {
+        ViewModelProvider(requireActivity(), Injection.provideViewModelFactory()).get(
+            MainActivityViewModel::class.java
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,16 +52,13 @@ class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel = ViewModelProvider(requireActivity(), Injection.provideViewModelFactory()).get(
-            MainActivityViewModel::class.java
-        )
-
         // Compute scroll position of RecyclerView
         binding.superHeroRecyclerView.computeScrollPosition(viewModel)
 
         val adapter = SuperHeroRecyclerAdapter(this)
         binding.superHeroRecyclerView.addItemDecoration(
             MarginItemDecoration(
+                requireContext().resources.getInteger(R.integer.span_count),
                 16,
                 convertDpToPx(requireContext())
             )
