@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
+import com.project.segunfrancis.superherocollection.framework.local.SuperHeroRoomDatabase
 import com.project.segunfrancis.superherocollection.framework.remote.SuperHeroService
 import com.project.segunfrancis.superherocollection.presentation.SuperHeroViewModelFactory
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.SHARED_PREF_KEY
@@ -15,7 +16,10 @@ import com.project.segunfrancis.superherocollection.presentation.utils.AppConsta
 
 class Injection : Application() {
     private fun provideRepository(): MainRepositoryImpl {
-        return MainRepositoryImpl(SuperHeroService.create())
+        return MainRepositoryImpl(
+            SuperHeroService.create(),
+            SuperHeroRoomDatabase.getInstance(this.applicationContext)!!.dao()
+        )
     }
 
     val viewModelFactory: ViewModelProvider.Factory

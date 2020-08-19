@@ -1,9 +1,6 @@
 package com.project.segunfrancis.superherocollection.presentation.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
@@ -33,5 +30,17 @@ class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : Vi
 
     fun setScrollYPosition(position: Int) {
         _scrollYPosition.value = position
+    }
+
+    fun setFavorite(character: CharacterEntity) {
+         repositoryImpl.setFavorite(character)
+    }
+
+    fun removeFavorite(character: CharacterEntity) {
+        repositoryImpl.removeFavorite(character)
+    }
+
+    val allFavorites: LiveData<List<CharacterEntity>> = liveData {
+        emit(repositoryImpl.getAllFavorites())
     }
 }

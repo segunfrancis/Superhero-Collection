@@ -51,6 +51,7 @@ class SuperHeroRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
                 }
             })
             binding.root.setOnClickListener { onClick.onItemClick(item) }
+            binding.likeButton.isLiked = item!!.isFavorite
         }
     }
 

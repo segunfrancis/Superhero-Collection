@@ -111,6 +111,9 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
             toast?.cancel()
             showToast(characterEntity.name.plus(" added to favorites"))
         }
+        // add to favorite
+        characterEntity.isFavorite = true
+        viewModel.setFavorite(characterEntity)
     }
 
     override fun onItemUnlike(characterEntity: CharacterEntity) {
@@ -120,6 +123,10 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
             toast?.cancel()
             showToast(characterEntity.name.plus(" removed from favorites"))
         }
+        // remove from favorite
+        characterEntity.isFavorite = false
+        viewModel.removeFavorite(characterEntity)
+
     }
 
     private fun showToast(message: String) {
