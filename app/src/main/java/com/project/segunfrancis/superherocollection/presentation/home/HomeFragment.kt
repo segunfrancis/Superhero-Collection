@@ -27,6 +27,7 @@ import com.project.segunfrancis.superherocollection.presentation.utils.OnRecycle
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.lang.String.valueOf
 
 /**
  * A simple [Fragment] subclass.
@@ -114,6 +115,9 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
         // add to favorite
         characterEntity.isFavorite = true
         viewModel.setFavorite(characterEntity)
+        val editor = (requireActivity().application as Injection).sharedPreferences.edit()
+        editor.putBoolean(valueOf(characterEntity.id), true)
+        editor.apply()
     }
 
     override fun onItemUnlike(characterEntity: CharacterEntity) {
@@ -126,7 +130,9 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
         // remove from favorite
         characterEntity.isFavorite = false
         viewModel.removeFavorite(characterEntity)
-
+        val editor = (requireActivity().application as Injection).sharedPreferences.edit()
+        editor.putBoolean(valueOf(characterEntity.id), false)
+        editor.apply()
     }
 
     private fun showToast(message: String) {

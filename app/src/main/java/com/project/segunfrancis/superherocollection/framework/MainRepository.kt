@@ -11,6 +11,6 @@ import kotlinx.coroutines.flow.Flow
 interface MainRepository {
     fun getSuperHeroesRemote(): Flow<PagingData<CharacterEntity>>
     fun setFavorite(character: CharacterEntity)
-    fun getAllFavorites(): List<CharacterEntity>
+    fun getAllFavorites(): Flow<List<CharacterEntity>>
     fun removeFavorite(character: CharacterEntity)
 }

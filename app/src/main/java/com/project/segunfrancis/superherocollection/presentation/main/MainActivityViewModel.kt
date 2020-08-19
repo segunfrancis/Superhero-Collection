@@ -6,6 +6,7 @@ import androidx.paging.cachedIn
 import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 
 /**
  * Created by SegunFrancis
@@ -41,6 +42,8 @@ class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : Vi
     }
 
     val allFavorites: LiveData<List<CharacterEntity>> = liveData {
-        emit(repositoryImpl.getAllFavorites())
+        repositoryImpl.getAllFavorites().collect {
+            emit(it)
+        }
     }
 }

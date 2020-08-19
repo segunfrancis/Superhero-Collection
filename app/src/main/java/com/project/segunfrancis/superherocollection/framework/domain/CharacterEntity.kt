@@ -2,6 +2,7 @@ package com.project.segunfrancis.superherocollection.framework.domain
 
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -19,6 +20,7 @@ data class CharacterEntity(
     @SerializedName("connections")
     val connections: ConnectionsEntity,
 
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
 

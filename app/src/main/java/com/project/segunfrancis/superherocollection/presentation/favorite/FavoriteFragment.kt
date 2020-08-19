@@ -1,5 +1,6 @@
 package com.project.segunfrancis.superherocollection.presentation.favorite
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,22 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.FavoriteFragmentBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
+import com.project.segunfrancis.superherocollection.presentation.detail.DetailActivity
 import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
-import com.project.segunfrancis.superherocollection.presentation.main.SuperHeroRecyclerAdapter
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants
 import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
 import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
 class FavoriteFragment : Fragment(), OnRecyclerItemClick {
 
-    private var job: Job? = null
     private lateinit var binding: FavoriteFragmentBinding
     private val viewModel: MainActivityViewModel by lazy {
         ViewModelProvider(
@@ -59,7 +56,12 @@ class FavoriteFragment : Fragment(), OnRecyclerItemClick {
 
 
     override fun onItemClick(characterEntity: CharacterEntity?) {
-
+        startActivity(
+            Intent(
+                requireContext(),
+                DetailActivity::class.java
+            ).putExtra(AppConstants.INTENT_KEY, characterEntity)
+        )
     }
 
     override fun onItemLike(characterEntity: CharacterEntity) {

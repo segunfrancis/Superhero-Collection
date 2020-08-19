@@ -2,6 +2,7 @@ package com.project.segunfrancis.superherocollection.framework.local
 
 import androidx.room.*
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by SegunFrancis
@@ -14,7 +15,7 @@ interface SuperHeroDao {
     fun setFavorite(character: CharacterEntity)
 
     @Query("SELECT * FROM character_table")
-    fun getAllFavorites(): List<CharacterEntity>
+    fun getAllFavorites(): Flow<List<CharacterEntity>>
 
     @Delete
     fun removeFavorite(character: CharacterEntity)

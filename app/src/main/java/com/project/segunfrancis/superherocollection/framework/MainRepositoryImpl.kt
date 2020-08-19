@@ -32,11 +32,13 @@ class MainRepositoryImpl(private val service: SuperHeroService, private val dao:
         }
     }
 
-    override fun getAllFavorites(): List<CharacterEntity> {
+    override fun getAllFavorites(): Flow<List<CharacterEntity>> {
         return dao.getAllFavorites()
     }
 
     override fun removeFavorite(character: CharacterEntity) {
-        dao.removeFavorite(character)
+        CoroutineScope(Dispatchers.IO).launch {
+            dao.removeFavorite(character)
+        }
     }
 }

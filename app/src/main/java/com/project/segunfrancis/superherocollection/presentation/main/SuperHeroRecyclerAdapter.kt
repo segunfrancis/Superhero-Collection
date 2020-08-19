@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import coil.api.load
 import com.like.LikeButton
 import com.like.OnLikeListener
+import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ItemSuperHeroBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
+import java.lang.String.valueOf
 
 /**
  * Created by SegunFrancis
@@ -33,7 +35,8 @@ class SuperHeroRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
     override fun onBindViewHolder(holder: SuperHeroRecyclerViewHolder, position: Int) =
         holder.bind(getItem(position), onItemClick)
 
-    class SuperHeroRecyclerViewHolder(private val binding: ItemSuperHeroBinding) : RecyclerView.ViewHolder(binding.root) {
+    class SuperHeroRecyclerViewHolder(private val binding: ItemSuperHeroBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CharacterEntity?, onClick: OnRecyclerItemClick) {
             binding.itemSuperHeroImageView.load(item?.images?.md) {
                 placeholder(R.drawable.loading_animation)
@@ -51,7 +54,11 @@ class SuperHeroRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
                 }
             })
             binding.root.setOnClickListener { onClick.onItemClick(item) }
-            binding.likeButton.isLiked = item!!.isFavorite
+            binding.likeButton.isLiked =
+                (binding.root.context.applicationContext as Injection).sharedPreferences.getBoolean(
+                    valueOf(item?.id),
+                    false
+                )
         }
     }
 
