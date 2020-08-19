@@ -38,7 +38,10 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
     private var searchJob: Job? = null
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: MainActivityViewModel by lazy {
-        ViewModelProvider(requireActivity(), Injection.provideViewModelFactory()).get(
+        ViewModelProvider(
+            requireActivity(),
+            (requireActivity().application as Injection).viewModelFactory
+        ).get(
             MainActivityViewModel::class.java
         )
     }
