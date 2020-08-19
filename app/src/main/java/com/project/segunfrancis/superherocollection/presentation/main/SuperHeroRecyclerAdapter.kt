@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import coil.api.load
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ItemSuperHeroBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
+import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
 
 /**
  * Created by SegunFrancis
@@ -38,12 +41,17 @@ class SuperHeroRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
             }
             binding.itemSuperHeroNameTextView.text = item?.name
             binding.itemSuperHeroSlugTextView.text = item?.connections?.groupAffiliation
+            binding.likeButton.setOnLikeListener(object : OnLikeListener {
+                override fun liked(likeButton: LikeButton?) {
+                    onClick.onItemLike(item!!)
+                }
+
+                override fun unLiked(likeButton: LikeButton?) {
+                    onClick.onItemUnlike(item!!)
+                }
+            })
             binding.root.setOnClickListener { onClick.onItemClick(item) }
         }
-    }
-
-    interface OnRecyclerItemClick {
-        fun onItemClick(characterEntity: CharacterEntity?)
     }
 
     companion object {

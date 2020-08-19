@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import com.google.android.material.snackbar.Snackbar
 import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.FragmentHomeBinding
@@ -23,6 +23,7 @@ import com.project.segunfrancis.superherocollection.presentation.utils.AppConsta
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.convertDpToPx
 import com.project.segunfrancis.superherocollection.presentation.utils.computeScrollPosition
 import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
+import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -31,10 +32,11 @@ import kotlinx.coroutines.launch
  * A simple [Fragment] subclass.
  */
 
-class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
+class HomeFragment : Fragment(), OnRecyclerItemClick {
 
-    private lateinit var binding: FragmentHomeBinding
+    private var toast: Toast? = null
     private var searchJob: Job? = null
+    private lateinit var binding: FragmentHomeBinding
     private val viewModel: MainActivityViewModel by lazy {
         ViewModelProvider(requireActivity(), Injection.provideViewModelFactory()).get(
             MainActivityViewModel::class.java
@@ -79,7 +81,7 @@ class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
                 ?: loadState.source.refresh as? LoadState.Error
                 ?: loadState.refresh as? LoadState.Error
             errorState?.let {
-                displaySnackBar(it.error.localizedMessage!!)
+                showToast(it.error.localizedMessage!!)
             }
         }
         searchJob?.cancel()
@@ -90,10 +92,6 @@ class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
         }
     }
 
-    private fun displaySnackBar(message: String) {
-        Snackbar.make(binding.homeConstraintLayout, message, Snackbar.LENGTH_LONG).show()
-    }
-
     override fun onItemClick(characterEntity: CharacterEntity?) {
         startActivity(
             Intent(
@@ -101,5 +99,32 @@ class HomeFragment : Fragment(), SuperHeroRecyclerAdapter.OnRecyclerItemClick {
                 DetailActivity::class.java
             ).putExtra(INTENT_KEY, characterEntity)
         )
+    }
+
+    override fun onItemLike(characterEntity: CharacterEntity) {
+        if (toast == null) {
+            showToast(characterEntity.name.plus(" added to favorites"))
+        } else {
+            toast?.cancel()
+            showToast(characterEntity.name.plus(" added to favorites"))
+        }
+    }
+
+    override fun onItemUnlike(characterEntity: CharacterEntity) {
+        if (toast == null) {
+            showToast(characterEntity.name.plus(" removed from favorites"))
+        } else {
+            toast?.cancel()
+            showToast(characterEntity.name.plus(" removed from favorites"))
+        }
+    }
+
+    private fun showToast(message: String) {
+        toast = Toast.makeText(
+            requireContext(),
+            message,
+            Toast.LENGTH_SHORT
+        )
+        toast?.show()
     }
 }

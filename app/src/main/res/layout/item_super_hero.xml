@@ -51,5 +51,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_superHero_name_textView"
             tools:text="Dragon Slayer" />
+
+        <com.like.LikeButton
+            android:id="@+id/like_button"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            app:icon_size="38dp"
+            app:icon_type="heart"
+            android:layout_margin="8dp"
+            app:dots_primary_color="@color/colorAccent"
+            app:dots_secondary_color="@color/colorPrimary"
+            app:circle_end_color="@color/intelligence"
+            app:circle_start_color="@color/combat"
+            app:like_drawable="@drawable/ic_baseline_favorite_red"
+            app:unlike_drawable="@drawable/ic_baseline_favorite_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
