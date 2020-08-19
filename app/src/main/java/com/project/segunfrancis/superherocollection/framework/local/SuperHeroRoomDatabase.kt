@@ -5,6 +5,8 @@ import androidx.room.RoomDatabase
 /**
  * Created by SegunFrancis
  */
+
+
 abstract class SuperHeroRoomDatabase : RoomDatabase() {
 
 }

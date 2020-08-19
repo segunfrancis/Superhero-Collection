@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.project.segunfrancis.superherocollection.framework.MainRepository
+import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
  * Created by SegunFrancis
  */
 
-class MainActivityViewModel(private val repository: MainRepository) : ViewModel() {
+class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : ViewModel() {
 
     private val _scrollYPosition = MutableLiveData<Int>()
     val scrollYPosition: LiveData<Int>
@@ -27,7 +27,7 @@ class MainActivityViewModel(private val repository: MainRepository) : ViewModel(
     }
 
     private fun fetchSuperHeroes(): Flow<PagingData<CharacterEntity>> {
-        return repository.getSuperHeroesRemote()
+        return repositoryImpl.getSuperHeroesRemote()
             .cachedIn(viewModelScope)
     }
 

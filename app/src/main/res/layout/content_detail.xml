@@ -14,27 +14,35 @@
         android:maxWidth="540dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/superHero_image"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="@dimen/image_size"
+                android:layout_height="@dimen/image_size"
+                android:layout_marginStart="16dp"
                 android:src="@drawable/dc_universe_header"
                 app:civ_border_color="@color/color1"
                 app:civ_border_width="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="@id/superHero_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/superHero_image"
+                app:layout_constraintTop_toTopOf="@id/superHero_image">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -42,70 +50,134 @@
 
                     <TextView
                         android:id="@+id/textView"
+                        style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gender: "
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/textView6"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/gender_textView"
-                        android:layout_width="wrap_content"
+                        style="@style/SmallTextValueStyle"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/textView"
+                        app:layout_constraintEnd_toStartOf="@id/guideline5"
                         app:layout_constraintStart_toEndOf="@id/textView"
+                        app:layout_constraintTop_toTopOf="@id/textView"
                         tools:text="Male" />
 
                     <TextView
+                        android:id="@+id/textView6"
+                        style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Eye Colour: "
-                        tools:layout_editor_absoluteX="210dp"
-                        tools:layout_editor_absoluteY="0dp" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView" />
 
                     <TextView
+                        android:id="@+id/eye_color_textView"
+                        style="@style/SmallTextValueStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/textView6"
+                        app:layout_constraintEnd_toStartOf="@id/guideline5"
+                        app:layout_constraintStart_toEndOf="@id/textView6"
+                        app:layout_constraintTop_toTopOf="@id/textView6"
+                        tools:text="Red" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hair Colour: "
-                        tools:layout_editor_absoluteX="175dp"
-                        tools:layout_editor_absoluteY="0dp" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView6" />
+
+                    <TextView
+                        android:id="@+id/hair_color_textView"
+                        style="@style/SmallTextValueStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/textView7"
+                        app:layout_constraintEnd_toStartOf="@id/guideline5"
+                        app:layout_constraintStart_toEndOf="@id/textView7"
+                        app:layout_constraintTop_toTopOf="@id/textView7"
+                        tools:text="Red" />
 
                     <TextView
                         android:id="@+id/textView5"
+                        style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Race: " />
+                        android:text="Race: "
+                        app:layout_constraintStart_toEndOf="@id/guideline5"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/race_textView"
+                        style="@style/SmallTextValueStyle"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/textView5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/textView5"
+                        app:layout_constraintTop_toTopOf="@id/textView5"
                         tools:text="Black" />
 
                     <TextView
+                        android:id="@+id/textView8"
+                        style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Height: " />
+                        android:text="Height: "
+                        app:layout_constraintStart_toEndOf="@id/guideline5"
+                        app:layout_constraintTop_toBottomOf="@id/textView5" />
 
                     <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/height_textView"
+                        style="@style/SmallTextValueStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@id/textView8"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/textView8"
+                        app:layout_constraintTop_toTopOf="@id/textView8"
                         tools:text="5.6ft" />
 
                     <TextView
+                        android:id="@+id/textView9"
+                        style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Weight: " />
+                        android:text="Weight: "
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideline5"
+                        app:layout_constraintTop_toBottomOf="@id/textView8" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/weight_textView"
+                        style="@style/SmallTextValueStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/textView9"
+                        app:layout_constraintStart_toEndOf="@id/textView9"
+                        app:layout_constraintTop_toTopOf="@id/textView9"
                         tools:text="56lb" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:layout_width="match_parent"

@@ -65,5 +65,12 @@ class DetailActivity : AppCompatActivity() {
 
         binding.include.groupAffiliationTextView.text = character.connections.groupAffiliation
         binding.include.relativesTextView.text = character.connections.relatives
+
+        binding.include.genderTextView.text = character.appearance.gender
+        binding.include.eyeColorTextView.text = character.appearance.eyeColor
+        binding.include.hairColorTextView.text = character.appearance.hairColor
+        binding.include.raceTextView.text = character.appearance.race
+        binding.include.heightTextView.text = character.appearance.height[1]
+        binding.include.weightTextView.text = character.appearance.weight[1]
     }
 }

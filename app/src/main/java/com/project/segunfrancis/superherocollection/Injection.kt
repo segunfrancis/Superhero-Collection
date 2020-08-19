@@ -1,7 +1,7 @@
 package com.project.segunfrancis.superherocollection
 
 import androidx.lifecycle.ViewModelProvider
-import com.project.segunfrancis.superherocollection.framework.MainRepository
+import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
 import com.project.segunfrancis.superherocollection.framework.remote.SuperHeroService
 import com.project.segunfrancis.superherocollection.presentation.SuperHeroViewModelFactory
 
@@ -9,8 +9,8 @@ import com.project.segunfrancis.superherocollection.presentation.SuperHeroViewMo
  * Created by SegunFrancis
  */
 object Injection {
-    private fun provideRepository(): MainRepository {
-        return MainRepository(SuperHeroService.create())
+    private fun provideRepository(): MainRepositoryImpl {
+        return MainRepositoryImpl(SuperHeroService.create())
     }
 
     fun provideViewModelFactory(): ViewModelProvider.Factory {
