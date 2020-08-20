@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(
             this,
-            (this.application as Injection).viewModelFactory)
-            .get(MainActivityViewModel::class.java)
+            (this.application as Injection).viewModelFactory
+        )[MainActivityViewModel::class.java]
 
         observeScrollPosition()
     }

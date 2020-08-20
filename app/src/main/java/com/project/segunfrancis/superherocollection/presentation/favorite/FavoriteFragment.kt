@@ -17,6 +17,7 @@ import com.project.segunfrancis.superherocollection.presentation.main.MainActivi
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants
 import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
 import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
+import com.project.segunfrancis.superherocollection.presentation.utils.computeScrollPosition
 
 class FavoriteFragment : Fragment(), OnRecyclerItemClick {
 
@@ -38,11 +39,13 @@ class FavoriteFragment : Fragment(), OnRecyclerItemClick {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+        // Compute scroll position of RecyclerView
+        binding.favSuperHeroRecyclerView.computeScrollPosition(viewModel)
 
         val adapter = FavoriteRecyclerAdapter(this)
-        binding.superHeroRecyclerView.adapter = adapter
-        binding.superHeroRecyclerView.addItemDecoration(
+        binding.favSuperHeroRecyclerView.adapter = adapter
+        binding.favSuperHeroRecyclerView.addItemDecoration(
             MarginItemDecoration(
                 requireContext().resources.getInteger(R.integer.span_count),
                 16,
