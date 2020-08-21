@@ -8,6 +8,10 @@
     <color name="color2">#0042B3</color>
     <color name="color4">#878787</color>
 
+    <!-- Toolbar -->
+    <color name="toolbar_background_color">#EEFFFFFF</color>
+    <color name="title_text_color">#111111</color>
+
     <!-- Power Stats colours -->
     <color name="power">#2E42E4</color>
     <color name="power_unfinished">#949EEF</color>

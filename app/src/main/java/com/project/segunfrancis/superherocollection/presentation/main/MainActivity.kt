@@ -19,7 +19,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var viewModel: MainActivityViewModel
+    private val viewModel: MainActivityViewModel by lazy {
+        ViewModelProvider(
+            this,
+            (this.application as Injection).viewModelFactory
+        )[MainActivityViewModel::class.java]
+    }
     private val badge: BadgeDrawable by lazy {
         binding.bottomNavView.getOrCreateBadge(R.id.favoriteFragment)
     }
@@ -36,11 +41,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavView.setupWithNavController(navController)
         initDestinationListener(navController)
-
-        viewModel = ViewModelProvider(
-            this,
-            (this.application as Injection).viewModelFactory
-        )[MainActivityViewModel::class.java]
 
         viewModel.showBadge.observe(this, Observer {
             if (it) addBadge()

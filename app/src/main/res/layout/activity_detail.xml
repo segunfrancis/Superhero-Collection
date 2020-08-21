@@ -11,13 +11,13 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#EEFFFFFF"
-        android:elevation="2dp"
+        android:background="@color/toolbar_background_color"
+        android:elevation="1dp"
         app:navigationIcon="@drawable/ic_back_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@android:color/black" />
+        app:titleTextColor="@color/title_text_color" />
 
     <include
         android:id="@+id/include"
