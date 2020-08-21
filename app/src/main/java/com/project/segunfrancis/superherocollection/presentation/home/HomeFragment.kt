@@ -73,6 +73,7 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
                 loadState.source.refresh is LoadState.NotLoading
             binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
             binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+            binding.retryAnimation.isVisible = loadState.source.refresh is LoadState.Error
 
             // Display on any error, regardless of whether it came from RemoteMediator or PagingSource
             val errorState = loadState.source.append as? LoadState.Error

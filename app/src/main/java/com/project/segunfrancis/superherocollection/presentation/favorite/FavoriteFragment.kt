@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
@@ -46,6 +47,7 @@ class FavoriteFragment : Fragment(), OnFavoriteRecyclerItemClick {
             )
         )
         viewModel.allFavorites.observe(viewLifecycleOwner, Observer {
+            binding.emptyAnimation.isVisible = it.isNullOrEmpty()
             adapter.submitList(it)
         })
     }

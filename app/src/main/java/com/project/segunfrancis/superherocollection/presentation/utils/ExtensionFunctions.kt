@@ -15,7 +15,7 @@ fun RecyclerView.computeScrollPosition(viewModel: MainActivityViewModel) {
     this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             overallYScroll += dy
-            viewModel.setScrollYPosition(overallYScroll)
+            //viewModel.setScrollYPosition(overallYScroll)
         }
     })
 }

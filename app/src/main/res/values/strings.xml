@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Superhero Collection</string>
     <string name="retry">Retry</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorite">Favourites</string>
     <string name="home">Home</string>
+
+    <string name="home_animation_source">https://lottiefiles.com/ivg</string>
+    <string name="home_animator_name">Ilya Gusinski</string>
+
+    <string name="empty_animation_source">https://lottiefiles.com/moveincat</string>
+    <string name="empty_animator_name">Nick</string>
+
+    <string name="no_connection_animation_source">https://lottiefiles.com/ryda.rashid</string>
+    <string name="no_connection_animator_name">Ry Arush</string>
 </resources>

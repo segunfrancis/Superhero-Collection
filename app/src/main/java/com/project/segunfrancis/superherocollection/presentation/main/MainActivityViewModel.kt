@@ -13,11 +13,6 @@ import kotlinx.coroutines.flow.collect
  */
 
 class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : ViewModel() {
-
-    private val _scrollYPosition = MutableLiveData<Int>()
-    val scrollYPosition: LiveData<Int>
-        get() = _scrollYPosition
-
     private val _showBadge = MutableLiveData<Boolean>(false)
     val showBadge: LiveData<Boolean>
         get() = _showBadge
@@ -31,10 +26,6 @@ class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : Vi
     private fun fetchSuperHeroes(): Flow<PagingData<CharacterEntity>> {
         return repositoryImpl.getSuperHeroesRemote()
             .cachedIn(viewModelScope)
-    }
-
-    fun setScrollYPosition(position: Int) {
-        _scrollYPosition.value = position
     }
 
     fun setFavorite(character: CharacterEntity) {
