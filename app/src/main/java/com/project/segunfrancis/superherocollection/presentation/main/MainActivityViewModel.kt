@@ -18,6 +18,10 @@ class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : Vi
     val scrollYPosition: LiveData<Int>
         get() = _scrollYPosition
 
+    private val _showBadge = MutableLiveData<Boolean>(false)
+    val showBadge: LiveData<Boolean>
+        get() = _showBadge
+
     var superHeroesData: Flow<PagingData<CharacterEntity>>
 
     init {
@@ -45,5 +49,9 @@ class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : Vi
         repositoryImpl.getAllFavorites().collect {
             emit(it)
         }
+    }
+
+    fun setShowBadge(value: Boolean) {
+        _showBadge.value = value
     }
 }

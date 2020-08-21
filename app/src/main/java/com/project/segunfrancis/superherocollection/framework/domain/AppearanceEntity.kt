@@ -13,7 +13,7 @@ data class AppearanceEntity(
     @SerializedName("height")
     val height: List<String>,
     @SerializedName("race")
-    val race: String,
+    val race: String? = "",
     @SerializedName("weight")
     val weight: List<String>
 ): Serializable

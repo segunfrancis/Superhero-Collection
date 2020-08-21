@@ -21,7 +21,6 @@ import com.project.segunfrancis.superherocollection.presentation.main.SuperHeroL
 import com.project.segunfrancis.superherocollection.presentation.main.SuperHeroRecyclerAdapter
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.INTENT_KEY
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.convertDpToPx
-import com.project.segunfrancis.superherocollection.presentation.utils.computeScrollPosition
 import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
 import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
 import kotlinx.coroutines.Job
@@ -57,10 +56,6 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        // Compute scroll position of RecyclerView
-        binding.superHeroRecyclerView.computeScrollPosition(viewModel)
-
         val adapter = SuperHeroRecyclerAdapter(this)
         binding.superHeroRecyclerView.addItemDecoration(
             MarginItemDecoration(
@@ -112,6 +107,7 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
             toast?.cancel()
             showToast(characterEntity.name.plus(" added to favorites"))
         }
+        viewModel.setShowBadge(true)
         // add to favorite
         characterEntity.isFavorite = true
         viewModel.setFavorite(characterEntity)

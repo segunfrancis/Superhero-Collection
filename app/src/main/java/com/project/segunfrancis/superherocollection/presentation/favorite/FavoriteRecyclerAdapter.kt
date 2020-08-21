@@ -10,14 +10,14 @@ import coil.api.load
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ItemSuperHeroBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
-import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
 import com.project.segunfrancis.superherocollection.presentation.favorite.FavoriteRecyclerAdapter.FavoriteViewHolder
+import com.project.segunfrancis.superherocollection.presentation.utils.OnFavoriteRecyclerItemClick
 
 /**
  * Created by SegunFrancis
  */
 
-class FavoriteRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
+class FavoriteRecyclerAdapter(private val onItemClick: OnFavoriteRecyclerItemClick) :
     ListAdapter<CharacterEntity, FavoriteViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
@@ -31,7 +31,7 @@ class FavoriteRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
 
     class FavoriteViewHolder(private val binding: ItemSuperHeroBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CharacterEntity?, onClick: OnRecyclerItemClick) {
+        fun bind(item: CharacterEntity?, onClick: OnFavoriteRecyclerItemClick) {
             binding.itemSuperHeroImageView.load(item?.images?.md) {
                 placeholder(R.drawable.loading_animation)
                 error(R.drawable.ic_broken_image)

@@ -14,12 +14,9 @@ import com.project.segunfrancis.superherocollection.databinding.FavoriteFragment
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.presentation.detail.DetailActivity
 import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
-import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants
-import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
-import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
-import com.project.segunfrancis.superherocollection.presentation.utils.computeScrollPosition
+import com.project.segunfrancis.superherocollection.presentation.utils.*
 
-class FavoriteFragment : Fragment(), OnRecyclerItemClick {
+class FavoriteFragment : Fragment(), OnFavoriteRecyclerItemClick {
 
     private lateinit var binding: FavoriteFragmentBinding
     private val viewModel: MainActivityViewModel by lazy {
@@ -39,10 +36,6 @@ class FavoriteFragment : Fragment(), OnRecyclerItemClick {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        // Compute scroll position of RecyclerView
-        binding.favSuperHeroRecyclerView.computeScrollPosition(viewModel)
-
         val adapter = FavoriteRecyclerAdapter(this)
         binding.favSuperHeroRecyclerView.adapter = adapter
         binding.favSuperHeroRecyclerView.addItemDecoration(
@@ -57,7 +50,6 @@ class FavoriteFragment : Fragment(), OnRecyclerItemClick {
         })
     }
 
-
     override fun onItemClick(characterEntity: CharacterEntity?) {
         startActivity(
             Intent(
@@ -65,13 +57,5 @@ class FavoriteFragment : Fragment(), OnRecyclerItemClick {
                 DetailActivity::class.java
             ).putExtra(AppConstants.INTENT_KEY, characterEntity)
         )
-    }
-
-    override fun onItemLike(characterEntity: CharacterEntity) {
-
-    }
-
-    override fun onItemUnlike(characterEntity: CharacterEntity) {
-
     }
 }
