@@ -1,0 +1,24 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        app:defaultValue="reply"
+        app:entries="@array/theme_entries"
+        app:entryValues="@array/theme_values"
+        app:icon="@drawable/ic_color_lens"
+        app:key="theme"
+        app:title="@string/theme_title"
+        app:useSimpleSummaryProvider="true" />
+
+    <Preference
+        app:icon="@drawable/ic_info"
+        app:key="about_app"
+        app:summary="@string/about_app_summary"
+        app:title="@string/about_app" />
+
+    <Preference
+        app:icon="@drawable/ic_info"
+        app:key="about_developer"
+        app:summary="@string/about_developer_summary"
+        app:title="@string/about_developer" />
+
+</PreferenceScreen>

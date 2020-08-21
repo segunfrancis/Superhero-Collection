@@ -23,6 +23,8 @@
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/empty_box"/>
+        app:lottie_rawRes="@raw/empty_box"
+        app:lottie_scale="0.4"
+        app:lottie_speed="0.5" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -12,4 +12,27 @@
 
     <string name="no_connection_animation_source">https://lottiefiles.com/ryda.rashid</string>
     <string name="no_connection_animator_name">Ry Arush</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Theme Preferences -->
+    <string name="theme_title">Select theme</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="about_developer">About Developer</string>
+    <string name="about_developer_summary">Information about the developer of this app</string>
+    <string name="about_app">About app</string>
+    <string name="about_app_summary">Information about the app</string>
 </resources>

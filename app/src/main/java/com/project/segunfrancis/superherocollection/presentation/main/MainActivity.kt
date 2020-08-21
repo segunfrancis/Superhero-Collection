@@ -1,7 +1,10 @@
 package com.project.segunfrancis.superherocollection.presentation.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.core.view.iterator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +17,7 @@ import com.google.android.material.badge.BadgeDrawable
 import com.project.segunfrancis.superherocollection.databinding.ActivityMainBinding
 import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
+import com.project.segunfrancis.superherocollection.presentation.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -69,5 +73,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideBadge() {
         badge.isVisible = false
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_settings) {
+            startActivity(Intent(this, SettingsActivity::class.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
