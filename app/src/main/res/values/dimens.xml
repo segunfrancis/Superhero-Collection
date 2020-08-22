@@ -4,4 +4,5 @@
     <dimen name="small_text_size">12sp</dimen>
     <dimen name="image_size">130dp</dimen>
     <dimen tools:override="true" name="design_fab_image_size">56dp</dimen>
+    <item name="animation_scale" type="integer" format="float">0.6</item>
 </resources>
