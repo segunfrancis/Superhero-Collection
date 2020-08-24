@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
 import com.project.segunfrancis.superherocollection.framework.local.SuperHeroRoomDatabase
 import com.project.segunfrancis.superherocollection.framework.remote.SuperHeroService
@@ -28,4 +29,6 @@ class Injection : Application() {
     val sharedPreferences: SharedPreferences
         get() = getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
 
+    val settingsPreferences: SharedPreferences
+        get() = PreferenceManager.getDefaultSharedPreferences(this.applicationContext)
 }

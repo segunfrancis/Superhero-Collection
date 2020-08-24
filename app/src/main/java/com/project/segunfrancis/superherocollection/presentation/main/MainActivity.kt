@@ -1,10 +1,12 @@
 package com.project.segunfrancis.superherocollection.presentation.main
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.iterator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +21,7 @@ import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.presentation.settings.SettingsActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -31,6 +33,9 @@ class MainActivity : AppCompatActivity() {
     }
     private val badge: BadgeDrawable by lazy {
         binding.bottomNavView.getOrCreateBadge(R.id.favoriteFragment)
+    }
+    private val preferences: SharedPreferences by lazy {
+        (application as Injection).settingsPreferences
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             if (it) addBadge()
             else hideBadge()
         })
+
+        preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     private fun initDestinationListener(navController: NavController) {
@@ -86,5 +93,41 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onSharedPreferenceChanged(pref: SharedPreferences?, key: String?) {
+        val prefValues = resources.getStringArray(R.array.theme_values)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            when (preferences.getString(key, prefValues[0])) {
+                prefValues[0] -> {
+                    // Light theme
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+                prefValues[1] -> {
+                    // dark theme
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+                else -> {
+                    // System default
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
+            }
+        } else { // API level below 29
+            when (preferences.getString(key, prefValues[0])) {
+                prefValues[0] -> {
+                    // Light theme
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+                prefValues[1] -> {
+                    // dark theme
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 }
