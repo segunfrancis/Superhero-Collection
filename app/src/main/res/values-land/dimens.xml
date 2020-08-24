@@ -2,6 +2,6 @@
 <resources>
     <dimen name="error_text_size">24sp</dimen>
     <dimen name="small_text_size">14sp</dimen>
-    <dimen name="image_size">140dp</dimen>
+    <dimen name="image_size">150dp</dimen>
     <item name="animation_scale" type="integer" format="float">0.3</item>
 </resources>

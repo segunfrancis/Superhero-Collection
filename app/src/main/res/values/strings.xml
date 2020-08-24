@@ -12,6 +12,10 @@
 
     <string name="no_connection_animation_source">https://lottiefiles.com/ryda.rashid</string>
     <string name="no_connection_animator_name">Ry Arush</string>
+
+    <string name="image_header">https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fcomic-watch.com%2Fnews%2Fnews-watch-dc-releases-new-titles-available-in-june&amp;psig=AOvVaw09XLwN8DZMeqkw_hdpagCS&amp;ust=1598309105219000&amp;source=images&amp;cd=vfe&amp;ved=0CA0QjhxqFwoTCNj4o82zsusCFQAAAAAdAAAAABAD</string>
+    <string name="image_header_source">Pinterest</string>
+
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->

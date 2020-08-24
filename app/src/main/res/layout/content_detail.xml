@@ -2,9 +2,9 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollable"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="?attr/actionBarSize"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <com.project.segunfrancis.superherocollection.presentation.utils.MaxWidthLinearLayout
@@ -14,35 +14,14 @@
         android:maxWidth="540dp"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/superHero_image"
-                android:layout_width="@dimen/image_size"
-                android:layout_height="@dimen/image_size"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/dc_universe_header"
-                app:civ_border_color="@color/color1"
-                app:civ_border_width="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_margin="16dp"
                 app:cardElevation="4dp"
-                app:layout_constraintBottom_toBottomOf="@id/superHero_image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/superHero_image"
-                app:layout_constraintTop_toTopOf="@id/superHero_image">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -177,7 +156,6 @@
                         app:layout_constraintGuide_percent="0.5" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:layout_width="match_parent"

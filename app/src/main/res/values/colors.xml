@@ -25,4 +25,7 @@
     <color name="strength_unfinished">#C1B7BF</color>
     <color name="durability">#5E1E1E</color>
     <color name="durability_unfinished">#C1B7BF</color>
+
+    <color name="tintImage">#99949EEF</color>
+    <color name="contentBackground">#FFF</color>
 </resources>

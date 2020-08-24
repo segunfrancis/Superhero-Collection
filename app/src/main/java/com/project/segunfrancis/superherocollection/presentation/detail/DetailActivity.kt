@@ -17,19 +17,20 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.toolbar.setNavigationOnClickListener {
-            super.onBackPressed()
-        }
+//        binding.toolbar.setNavigationOnClickListener {
+//            super.onBackPressed()
+//        }
 
         val character = intent.getSerializableExtra(INTENT_KEY) as CharacterEntity
         populateData(character)
     }
 
     private fun populateData(character: CharacterEntity) {
-        binding.include.superHeroImage.load(character.images.md) {
+        binding.includeMotion.superHeroImage.load(character.images.md) {
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_broken_image)
         }
+        binding.includeMotion.name.text = character.name
         binding.include.combatProgressView.apply {
             progress = character.powerstats.combat.toFloat()
             labelText = character.powerstats.combat.toString().plus("%")
@@ -54,7 +55,7 @@ class DetailActivity : AppCompatActivity() {
             progress = character.powerstats.speed.toFloat()
             labelText = character.powerstats.speed.toString().plus("%")
         }
-        binding.toolbar.title = character.name
+        //binding.toolbar.title = character.name
         binding.include.fullNameTextView.text = character.biography.fullName
         binding.include.aliasesTextView.text = character.biography.aliases[0]
         binding.include.placeOfBirthTextView.text = character.biography.placeOfBirth
