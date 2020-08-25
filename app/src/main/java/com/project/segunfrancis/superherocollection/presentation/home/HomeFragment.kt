@@ -1,6 +1,7 @@
 package com.project.segunfrancis.superherocollection.presentation.home
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,9 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
         ).get(
             MainActivityViewModel::class.java
         )
+    }
+    private val sharedPreferences: SharedPreferences by lazy {
+        (requireActivity().application as Injection).sharedPreferences
     }
 
     override fun onCreateView(
@@ -112,7 +116,7 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
         // add to favorite
         characterEntity.isFavorite = true
         viewModel.setFavorite(characterEntity)
-        val editor = (requireActivity().application as Injection).sharedPreferences.edit()
+        val editor = sharedPreferences.edit()
         editor.putBoolean(valueOf(characterEntity.id), true)
         editor.apply()
     }
@@ -127,7 +131,7 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
         // remove from favorite
         characterEntity.isFavorite = false
         viewModel.removeFavorite(characterEntity)
-        val editor = (requireActivity().application as Injection).sharedPreferences.edit()
+        val editor = sharedPreferences.edit()
         editor.putBoolean(valueOf(characterEntity.id), false)
         editor.apply()
     }
