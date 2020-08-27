@@ -24,28 +24,24 @@ import com.project.segunfrancis.superherocollection.presentation.utils.AppConsta
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.convertDpToPx
 import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
 import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.lang.String.valueOf
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  */
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(), OnRecyclerItemClick {
 
     private var toast: Toast? = null
     private var searchJob: Job? = null
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: MainActivityViewModel by lazy {
-        ViewModelProvider(
-            requireActivity(),
-            (requireActivity().application as Injection).viewModelFactory
-        ).get(
-            MainActivityViewModel::class.java
-        )
-    }
+    @Inject lateinit var viewModel: MainActivityViewModel
     private val sharedPreferences: SharedPreferences by lazy {
         (requireActivity().application as Injection).sharedPreferences
     }

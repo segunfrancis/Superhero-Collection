@@ -7,12 +7,13 @@ import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
 /**
  * Created by SegunFrancis
  */
 
-class MainActivityViewModel(private val repositoryImpl: MainRepositoryImpl) : ViewModel() {
+class MainActivityViewModel @Inject constructor(private val repositoryImpl: MainRepositoryImpl) : ViewModel() {
     private val _showBadge = MutableLiveData<Boolean>(false)
     val showBadge: LiveData<Boolean>
         get() = _showBadge

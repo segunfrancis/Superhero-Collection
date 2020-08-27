@@ -4,12 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
 import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
+import javax.inject.Inject
 
 /**
  * Created by SegunFrancis
  */
 
-class SuperHeroViewModelFactory(private val repositoryImpl: MainRepositoryImpl) : ViewModelProvider.Factory {
+class SuperHeroViewModelFactory @Inject constructor(private val repositoryImpl: MainRepositoryImpl) : ViewModelProvider.Factory {
 
     /**
      * Creates a new instance of the given `Class`.

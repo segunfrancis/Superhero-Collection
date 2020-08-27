@@ -9,7 +9,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.iterator
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -20,17 +19,15 @@ import com.project.segunfrancis.superherocollection.databinding.ActivityMainBind
 import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.presentation.settings.SettingsActivity
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private val viewModel: MainActivityViewModel by lazy {
-        ViewModelProvider(
-            this,
-            (this.application as Injection).viewModelFactory
-        )[MainActivityViewModel::class.java]
-    }
+    @Inject lateinit var viewModel: MainActivityViewModel
     private val badge: BadgeDrawable by lazy {
         binding.bottomNavView.getOrCreateBadge(R.id.favoriteFragment)
     }

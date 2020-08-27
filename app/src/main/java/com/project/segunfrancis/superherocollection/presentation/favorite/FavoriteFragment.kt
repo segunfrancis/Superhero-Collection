@@ -1,7 +1,6 @@
 package com.project.segunfrancis.superherocollection.presentation.favorite
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,23 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.FavoriteFragmentBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.presentation.detail.DetailActivity
 import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
 import com.project.segunfrancis.superherocollection.presentation.utils.*
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment(), OnFavoriteRecyclerItemClick {
 
     private lateinit var binding: FavoriteFragmentBinding
-    private val viewModel: MainActivityViewModel by lazy {
-        ViewModelProvider(
-            this,
-            (requireActivity().application as Injection).viewModelFactory
-        )[MainActivityViewModel::class.java]
-    }
+    @Inject lateinit var viewModel: MainActivityViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

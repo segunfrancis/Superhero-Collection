@@ -10,13 +10,15 @@ import com.project.segunfrancis.superherocollection.framework.local.SuperHeroRoo
 import com.project.segunfrancis.superherocollection.framework.remote.SuperHeroService
 import com.project.segunfrancis.superherocollection.presentation.SuperHeroViewModelFactory
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.SHARED_PREF_KEY
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Created by SegunFrancis
  */
 
+@HiltAndroidApp
 class Injection : Application() {
-    private fun provideRepository(): MainRepositoryImpl {
+    /*private fun provideRepository(): MainRepositoryImpl {
         return MainRepositoryImpl(
             SuperHeroService.create(),
             SuperHeroRoomDatabase.getInstance(this.applicationContext)!!.dao()
@@ -24,7 +26,7 @@ class Injection : Application() {
     }
 
     val viewModelFactory: ViewModelProvider.Factory
-        get() = SuperHeroViewModelFactory(provideRepository())
+        get() = SuperHeroViewModelFactory(provideRepository())*/
 
     val sharedPreferences: SharedPreferences
         get() = getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
