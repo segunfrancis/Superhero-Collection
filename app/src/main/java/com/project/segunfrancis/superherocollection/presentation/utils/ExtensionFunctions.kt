@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar
  * Extension function to calculate the scroll position of the [RecyclerView] and
  * elevate the [Toolbar] as needed
  */
-fun RecyclerView.computeScrollPosition(viewModel: MainActivityViewModel) {
+/*fun RecyclerView.computeScrollPosition(viewModel: MainActivityViewModel) {
     var overallYScroll = 0
     this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -18,4 +18,4 @@ fun RecyclerView.computeScrollPosition(viewModel: MainActivityViewModel) {
             //viewModel.setScrollYPosition(overallYScroll)
         }
     })
-}
+}*/

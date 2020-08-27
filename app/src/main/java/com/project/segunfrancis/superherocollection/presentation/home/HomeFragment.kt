@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.project.segunfrancis.superherocollection.Injection
@@ -41,6 +40,7 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
     private var toast: Toast? = null
     private var searchJob: Job? = null
     private lateinit var binding: FragmentHomeBinding
+
     @Inject lateinit var viewModel: MainActivityViewModel
     private val sharedPreferences: SharedPreferences by lazy {
         (requireActivity().application as Injection).sharedPreferences
