@@ -7,33 +7,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.FavoriteFragmentBinding
-import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import com.project.segunfrancis.superherocollection.presentation.detail.DetailActivity
-import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
+import com.project.segunfrancis.superherocollection.presentation.main.MainViewModel
 import com.project.segunfrancis.superherocollection.presentation.utils.*
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class FavoriteFragment : Fragment(), OnFavoriteRecyclerItemClick {
+class FavoriteFragment : Fragment() {
 
     private lateinit var binding: FavoriteFragmentBinding
-    @Inject lateinit var viewModel: MainActivityViewModel
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = inflater.inflate(R.layout.favorite_fragment, container, false)
         binding = FavoriteFragmentBinding.bind(view)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val adapter = FavoriteRecyclerAdapter(this)
+        val adapter = FavoriteRecyclerAdapter { characterEntity ->
+            startActivity(
+                Intent(
+                    requireContext(),
+                    DetailActivity::class.java
+                ).putExtra(AppConstants.INTENT_KEY, characterEntity)
+            )
+        }
         binding.favSuperHeroRecyclerView.adapter = adapter
         binding.favSuperHeroRecyclerView.addItemDecoration(
             MarginItemDecoration(
@@ -42,18 +47,9 @@ class FavoriteFragment : Fragment(), OnFavoriteRecyclerItemClick {
                 AppConstants.convertDpToPx(requireContext())
             )
         )
-        viewModel.allFavorites.observe(viewLifecycleOwner, Observer {
+        viewModel.allFavorites.observe(viewLifecycleOwner) {
             binding.emptyAnimation.isVisible = it.isNullOrEmpty()
             adapter.submitList(it)
-        })
-    }
-
-    override fun onItemClick(characterEntity: CharacterEntity?) {
-        startActivity(
-            Intent(
-                requireContext(),
-                DetailActivity::class.java
-            ).putExtra(AppConstants.INTENT_KEY, characterEntity)
-        )
+        }
     }
 }

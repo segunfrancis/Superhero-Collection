@@ -10,6 +10,7 @@ object AppConstants {
     const val BASE_URL: String = " https://rosariopfernandes.github.io/dc-villains-api/"
     const val INTENT_KEY: String = "character_item"
     const val SHARED_PREF_KEY: String = "com.project.segunfrancis.superherocollection.SHARED_PREF_KEY"
+    const val DATABASE_NAME: String = "super_hero_database"
 
     /**
      * Converts dp which is returned by the XML to pixels
