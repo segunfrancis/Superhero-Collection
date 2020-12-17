@@ -11,11 +11,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created by SegunFrancis
  */
-class MainRepositoryImpl(private val service: SuperHeroService, private val dao: SuperHeroDao): MainRepository {
+class MainRepositoryImpl @Inject constructor(private val service: SuperHeroService, private val dao: SuperHeroDao): MainRepository {
     override fun getSuperHeroesRemote(): Flow<PagingData<CharacterEntity>> {
         return Pager(
             config = PagingConfig(

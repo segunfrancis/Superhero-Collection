@@ -2,7 +2,7 @@ package com.project.segunfrancis.superherocollection.presentation.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import coil.api.load
+import coil.load
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ActivityDetailBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
@@ -16,10 +16,6 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        binding.toolbar.setNavigationOnClickListener {
-//            super.onBackPressed()
-//        }
 
         val character = intent.getSerializableExtra(INTENT_KEY) as CharacterEntity
         populateData(character)
@@ -55,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
             progress = character.powerstats.speed.toFloat()
             labelText = character.powerstats.speed.toString().plus("%")
         }
-        //binding.toolbar.title = character.name
+
         binding.include.fullNameTextView.text = character.biography.fullName
         binding.include.aliasesTextView.text = character.biography.aliases[0]
         binding.include.placeOfBirthTextView.text = character.biography.placeOfBirth

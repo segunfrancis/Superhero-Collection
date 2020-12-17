@@ -7,9 +7,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.view.iterator
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,26 +16,24 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.badge.BadgeDrawable
 import com.project.segunfrancis.superherocollection.databinding.ActivityMainBinding
-import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
+import com.project.segunfrancis.superherocollection.di.SettingsPreference
 import com.project.segunfrancis.superherocollection.presentation.settings.SettingsActivity
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private val viewModel: MainActivityViewModel by lazy {
-        ViewModelProvider(
-            this,
-            (this.application as Injection).viewModelFactory
-        )[MainActivityViewModel::class.java]
-    }
     private val badge: BadgeDrawable by lazy {
         binding.bottomNavView.getOrCreateBadge(R.id.favoriteFragment)
     }
-    private val preferences: SharedPreferences by lazy {
-        (application as Injection).settingsPreferences
-    }
+
+    @SettingsPreference
+    @Inject
+    lateinit var preferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,10 +48,10 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         binding.bottomNavView.setupWithNavController(navController)
         initDestinationListener(navController)
 
-        viewModel.showBadge.observe(this, Observer {
+        /*viewModel.showBadge.observe(this, Observer {
             if (it) addBadge()
             else hideBadge()
-        })
+        })*/
 
         preferences.registerOnSharedPreferenceChangeListener(this)
     }
@@ -65,7 +62,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             binding.bottomNavView.menu.iterator().forEach { menuItem ->
                 menuItem.isEnabled = true
             }
-            if (destination.id == R.id.favoriteFragment) viewModel.setShowBadge(false)
+            //if (destination.id == R.id.favoriteFragment) viewModel.setShowBadge(false)
             val menu = binding.bottomNavView.menu.findItem(destination.id)
             menu?.isEnabled = false
         }
@@ -74,7 +71,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     private fun addBadge() {
         badge.verticalOffset = 3
         badge.horizontalOffset = 3
-        badge.backgroundColor = resources.getColor(R.color.power)
+        badge.backgroundColor = ContextCompat.getColor(this, R.color.power)
         badge.isVisible = true
     }
 

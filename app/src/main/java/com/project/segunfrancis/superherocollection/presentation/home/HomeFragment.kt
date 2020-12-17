@@ -1,6 +1,7 @@
 package com.project.segunfrancis.superherocollection.presentation.home
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,55 +9,87 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.FragmentHomeBinding
-import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
+import com.project.segunfrancis.superherocollection.di.LikePreference
 import com.project.segunfrancis.superherocollection.presentation.detail.DetailActivity
-import com.project.segunfrancis.superherocollection.presentation.main.MainActivityViewModel
+import com.project.segunfrancis.superherocollection.presentation.main.MainViewModel
 import com.project.segunfrancis.superherocollection.presentation.main.SuperHeroLoadStateAdapter
 import com.project.segunfrancis.superherocollection.presentation.main.SuperHeroRecyclerAdapter
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.INTENT_KEY
 import com.project.segunfrancis.superherocollection.presentation.utils.AppConstants.convertDpToPx
 import com.project.segunfrancis.superherocollection.presentation.utils.MarginItemDecoration
-import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
-import kotlinx.coroutines.Job
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.lang.String.valueOf
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  */
 
-class HomeFragment : Fragment(), OnRecyclerItemClick {
+@AndroidEntryPoint
+class HomeFragment : Fragment() {
 
     private var toast: Toast? = null
-    private var searchJob: Job? = null
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: MainActivityViewModel by lazy {
-        ViewModelProvider(
-            requireActivity(),
-            (requireActivity().application as Injection).viewModelFactory
-        ).get(
-            MainActivityViewModel::class.java
-        )
-    }
+    private val viewModel: MainViewModel by viewModels()
+
+    @LikePreference
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         binding = FragmentHomeBinding.bind(view)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val adapter = SuperHeroRecyclerAdapter(this)
+        val adapter = SuperHeroRecyclerAdapter({ item -> // OnItemClick
+            startActivity(
+                Intent(
+                    requireContext(),
+                    DetailActivity::class.java
+                ).putExtra(INTENT_KEY, item)
+            )
+        }, { item -> // OnItemLike
+            if (toast == null) {
+                showToast(item.name.plus(" added to favorites"))
+            } else {
+                toast?.cancel()
+                showToast(item.name.plus(" added to favorites"))
+            }
+            //viewModel.setShowBadge(true)
+            // add to favorite
+            item.isFavorite = true
+            viewModel.setFavorite(item)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean(valueOf(item.id), true)
+            editor.apply()
+        }, { item -> // OnItemUnlike
+            if (toast == null) {
+                showToast(item.name.plus(" removed from favorites"))
+            } else {
+                toast?.cancel()
+                showToast(item.name.plus(" removed from favorites"))
+            }
+            // remove from favorite
+            item.isFavorite = false
+            viewModel.removeFavorite(item)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean(valueOf(item.id), false)
+            editor.apply()
+        }, { lb, item -> // Set state of Like button
+            lb.isLiked = sharedPreferences.getBoolean(valueOf(item.id), false)
+        })
         binding.superHeroRecyclerView.addItemDecoration(
             MarginItemDecoration(
                 requireContext().resources.getInteger(R.integer.span_count),
@@ -84,52 +117,12 @@ class HomeFragment : Fragment(), OnRecyclerItemClick {
                 showToast(it.error.localizedMessage!!)
             }
         }
-        searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
+
+        lifecycleScope.launch {
             viewModel.superHeroesData.collect {
                 adapter.submitData(it)
             }
         }
-    }
-
-    override fun onItemClick(characterEntity: CharacterEntity?) {
-        startActivity(
-            Intent(
-                requireContext(),
-                DetailActivity::class.java
-            ).putExtra(INTENT_KEY, characterEntity)
-        )
-    }
-
-    override fun onItemLike(characterEntity: CharacterEntity) {
-        if (toast == null) {
-            showToast(characterEntity.name.plus(" added to favorites"))
-        } else {
-            toast?.cancel()
-            showToast(characterEntity.name.plus(" added to favorites"))
-        }
-        viewModel.setShowBadge(true)
-        // add to favorite
-        characterEntity.isFavorite = true
-        viewModel.setFavorite(characterEntity)
-        val editor = (requireActivity().application as Injection).sharedPreferences.edit()
-        editor.putBoolean(valueOf(characterEntity.id), true)
-        editor.apply()
-    }
-
-    override fun onItemUnlike(characterEntity: CharacterEntity) {
-        if (toast == null) {
-            showToast(characterEntity.name.plus(" removed from favorites"))
-        } else {
-            toast?.cancel()
-            showToast(characterEntity.name.plus(" removed from favorites"))
-        }
-        // remove from favorite
-        characterEntity.isFavorite = false
-        viewModel.removeFavorite(characterEntity)
-        val editor = (requireActivity().application as Injection).sharedPreferences.edit()
-        editor.putBoolean(valueOf(characterEntity.id), false)
-        editor.apply()
     }
 
     private fun showToast(message: String) {

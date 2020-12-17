@@ -5,21 +5,23 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import coil.api.load
 import com.like.LikeButton
 import com.like.OnLikeListener
-import com.project.segunfrancis.superherocollection.Injection
 import com.project.segunfrancis.superherocollection.R
 import com.project.segunfrancis.superherocollection.databinding.ItemSuperHeroBinding
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
-import com.project.segunfrancis.superherocollection.presentation.utils.OnRecyclerItemClick
-import java.lang.String.valueOf
+import com.project.segunfrancis.superherocollection.presentation.utils.loadImage
 
 /**
  * Created by SegunFrancis
  */
 
-class SuperHeroRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
+class SuperHeroRecyclerAdapter(
+    private val onItemClick: (item: CharacterEntity) -> Unit,
+    private val onItemLike: (item: CharacterEntity) -> Unit,
+    private val onItemUnlike: (item: CharacterEntity) -> Unit,
+    private val button: (lb: LikeButton, item: CharacterEntity) -> Unit
+) :
     PagingDataAdapter<CharacterEntity, SuperHeroRecyclerAdapter.SuperHeroRecyclerViewHolder>(
         ITEM_CALLBACK
     ) {
@@ -33,32 +35,32 @@ class SuperHeroRecyclerAdapter(private val onItemClick: OnRecyclerItemClick) :
     }
 
     override fun onBindViewHolder(holder: SuperHeroRecyclerViewHolder, position: Int) =
-        holder.bind(getItem(position), onItemClick)
+        holder.bind(getItem(position), onItemClick, onItemLike, onItemUnlike, button)
 
     class SuperHeroRecyclerViewHolder(private val binding: ItemSuperHeroBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CharacterEntity?, onClick: OnRecyclerItemClick) {
-            binding.itemSuperHeroImageView.load(item?.images?.md) {
-                placeholder(R.drawable.loading_animation)
-                error(R.drawable.ic_broken_image)
-            }
+        fun bind(
+            item: CharacterEntity?,
+            onItemClick: (item: CharacterEntity) -> Unit,
+            onItemLike: (item: CharacterEntity) -> Unit,
+            onItemUnlike: (item: CharacterEntity) -> Unit,
+            button: (lb: LikeButton, item: CharacterEntity) -> Unit
+        ) {
+            binding.itemSuperHeroImageView.loadImage(item?.images?.md)
+
             binding.itemSuperHeroNameTextView.text = item?.name
             binding.itemSuperHeroSlugTextView.text = item?.connections?.groupAffiliation
             binding.likeButton.setOnLikeListener(object : OnLikeListener {
                 override fun liked(likeButton: LikeButton?) {
-                    onClick.onItemLike(item!!)
+                    onItemLike(item!!)
                 }
 
                 override fun unLiked(likeButton: LikeButton?) {
-                    onClick.onItemUnlike(item!!)
+                    onItemUnlike(item!!)
                 }
             })
-            binding.root.setOnClickListener { onClick.onItemClick(item) }
-            binding.likeButton.isLiked =
-                (binding.root.context.applicationContext as Injection).sharedPreferences.getBoolean(
-                    valueOf(item?.id),
-                    false
-                )
+            binding.root.setOnClickListener { onItemClick(item!!) }
+            button(binding.likeButton, item!!)
         }
     }
 
