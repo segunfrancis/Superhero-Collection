@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.project.segunfrancis.superherocollection.framework.MainRepository
+import com.project.segunfrancis.superherocollection.framework.repo.MainRepository
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect

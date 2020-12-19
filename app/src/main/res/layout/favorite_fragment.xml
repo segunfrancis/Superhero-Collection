@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".presentation.favorite.FavoriteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fav_superHero_recyclerView"
@@ -13,18 +14,15 @@
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="@integer/span_count"
-        tools:context=".presentation.favorite.FavoriteFragment"
         tools:listitem="@layout/item_super_hero" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/empty_animation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/animation_size"
+        android:layout_height="@dimen/animation_size"
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/empty_box"
-        app:lottie_scale="0.4"
-        app:lottie_speed="0.5" />
+        app:lottie_rawRes="@raw/empty_box" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

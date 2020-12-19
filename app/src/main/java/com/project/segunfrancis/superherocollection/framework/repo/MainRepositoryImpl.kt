@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.framework
+package com.project.segunfrancis.superherocollection.framework.repo
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -16,7 +16,8 @@ import javax.inject.Inject
 /**
  * Created by SegunFrancis
  */
-class MainRepositoryImpl @Inject constructor(private val service: SuperHeroService, private val dao: SuperHeroDao): MainRepository {
+class MainRepositoryImpl @Inject constructor(private val service: SuperHeroService, private val dao: SuperHeroDao):
+    MainRepository {
     override fun getSuperHeroesRemote(): Flow<PagingData<CharacterEntity>> {
         return Pager(
             config = PagingConfig(

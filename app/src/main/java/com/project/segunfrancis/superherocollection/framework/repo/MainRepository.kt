@@ -1,4 +1,4 @@
-package com.project.segunfrancis.superherocollection.framework
+package com.project.segunfrancis.superherocollection.framework.repo
 
 import androidx.paging.PagingData
 import com.project.segunfrancis.superherocollection.framework.domain.CharacterEntity

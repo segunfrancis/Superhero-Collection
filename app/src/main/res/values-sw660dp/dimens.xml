@@ -4,4 +4,5 @@
     <dimen name="small_text_size">14sp</dimen>
     <dimen name="image_size">160dp</dimen>
     <item name="animation_scale" type="integer" format="float">0.9</item>
+    <item name="animation_size" type="dimen">340dp</item>
 </resources>
