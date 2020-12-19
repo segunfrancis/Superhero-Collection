@@ -1,7 +1,7 @@
 package com.project.segunfrancis.superherocollection.di
 
-import com.project.segunfrancis.superherocollection.framework.MainRepository
-import com.project.segunfrancis.superherocollection.framework.MainRepositoryImpl
+import com.project.segunfrancis.superherocollection.framework.repo.MainRepository
+import com.project.segunfrancis.superherocollection.framework.repo.MainRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

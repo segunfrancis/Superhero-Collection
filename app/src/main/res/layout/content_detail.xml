@@ -32,7 +32,7 @@
                         style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gender: "
+                        android:text="@string/text_gender"
                         app:layout_constraintBottom_toTopOf="@id/textView6"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -42,6 +42,7 @@
                         style="@style/SmallTextValueStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         app:layout_constraintBottom_toBottomOf="@id/textView"
                         app:layout_constraintEnd_toStartOf="@id/guideline5"
                         app:layout_constraintStart_toEndOf="@id/textView"
@@ -53,7 +54,7 @@
                         style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Eye Colour: "
+                        android:text="@string/text_eye_colour"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/textView" />
 
@@ -62,6 +63,7 @@
                         style="@style/SmallTextValueStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         app:layout_constraintBottom_toBottomOf="@id/textView6"
                         app:layout_constraintEnd_toStartOf="@id/guideline5"
                         app:layout_constraintStart_toEndOf="@id/textView6"
@@ -73,7 +75,7 @@
                         style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hair Colour: "
+                        android:text="@string/text_hair_colour"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/textView6" />
 
@@ -82,6 +84,7 @@
                         style="@style/SmallTextValueStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         app:layout_constraintBottom_toBottomOf="@id/textView7"
                         app:layout_constraintEnd_toStartOf="@id/guideline5"
                         app:layout_constraintStart_toEndOf="@id/textView7"
@@ -93,7 +96,7 @@
                         style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Race: "
+                        android:text="@string/text_race"
                         app:layout_constraintStart_toEndOf="@id/guideline5"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,6 +105,7 @@
                         style="@style/SmallTextValueStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         app:layout_constraintBottom_toBottomOf="@id/textView5"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/textView5"
@@ -113,7 +117,7 @@
                         style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Height: "
+                        android:text="@string/text_height"
                         app:layout_constraintStart_toEndOf="@id/guideline5"
                         app:layout_constraintTop_toBottomOf="@id/textView5" />
 
@@ -122,6 +126,7 @@
                         style="@style/SmallTextValueStyle"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_marginStart="4dp"
                         app:layout_constraintBottom_toBottomOf="@id/textView8"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/textView8"
@@ -133,7 +138,7 @@
                         style="@style/SmallTextKeyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Weight: "
+                        android:text="@string/text_weight"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/guideline5"
                         app:layout_constraintTop_toBottomOf="@id/textView8" />
@@ -143,6 +148,7 @@
                         style="@style/SmallTextValueStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         app:layout_constraintBottom_toBottomOf="@id/textView9"
                         app:layout_constraintStart_toEndOf="@id/textView9"
                         app:layout_constraintTop_toTopOf="@id/textView9"
@@ -161,7 +167,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/berkshire_swash"
-            android:text="Power Stats"
+            android:text="@string/text_power_stats"
+            android:layout_marginStart="8dp"
             android:textSize="22sp" />
 
         <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
@@ -169,14 +176,15 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp">
+                android:layout_marginEnd="12dp">
 
                 <TextView
                     android:id="@+id/intelligence"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Intelligence"
+                    android:text="@string/text_intelligence"
                     app:layout_constraintBottom_toTopOf="@+id/strength"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -195,10 +203,11 @@
 
                 <TextView
                     android:id="@+id/strength"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Strength"
+                    android:text="@string/text_strength"
                     app:layout_constraintBottom_toTopOf="@id/speed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/intelligence" />
@@ -217,10 +226,11 @@
 
                 <TextView
                     android:id="@+id/speed"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Speed"
+                    android:text="@string/text_speed"
                     app:layout_constraintBottom_toTopOf="@id/combat"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/strength" />
@@ -239,10 +249,11 @@
 
                 <TextView
                     android:id="@+id/combat"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Combat"
+                    android:text="@string/text_combat"
                     app:layout_constraintBottom_toTopOf="@id/power"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/speed" />
@@ -261,10 +272,11 @@
 
                 <TextView
                     android:id="@+id/power"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Power"
+                    android:text="@string/text_power"
                     app:layout_constraintBottom_toTopOf="@id/durability"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/combat" />
@@ -283,9 +295,10 @@
 
                 <TextView
                     android:id="@+id/durability"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Durability"
+                    android:text="@string/text_durability"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/power" />
@@ -313,28 +326,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/berkshire_swash"
-            android:text="Biography"
+            android:text="@string/text_biography"
+            android:layout_marginStart="8dp"
             android:textSize="22sp" />
 
         <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/fullName"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Full Name"
+                    android:text="@string/text_full_name"
                     app:layout_constraintBottom_toTopOf="@id/aliases"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/fullName_textView"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@id/fullName"
@@ -344,16 +359,18 @@
 
                 <TextView
                     android:id="@+id/aliases"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Aliases"
+                    android:text="@string/text_aliases"
                     app:layout_constraintBottom_toTopOf="@id/place_of_birth"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/fullName" />
 
                 <TextView
                     android:id="@+id/aliases_textView"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -366,16 +383,18 @@
 
                 <TextView
                     android:id="@+id/place_of_birth"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Place of Birth"
+                    android:text="@string/text_place_of_birth"
                     app:layout_constraintBottom_toTopOf="@id/alignment"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/aliases" />
 
                 <TextView
                     android:id="@+id/place_of_birth_textView"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@id/place_of_birth"
@@ -385,15 +404,17 @@
 
                 <TextView
                     android:id="@+id/alignment"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Alignment"
+                    android:text="@string/text_alignment"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/place_of_birth" />
 
                 <TextView
                     android:id="@+id/alignment_textView"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@id/alignment"
@@ -411,28 +432,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/berkshire_swash"
-            android:text="Work"
+            android:text="@string/text_work"
+            android:layout_marginStart="8dp"
             android:textSize="22sp" />
 
         <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/occupation"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Occupation"
+                    android:text="@string/text_occupation"
                     app:layout_constraintBottom_toTopOf="@id/base"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/occupation_textView"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@id/occupation"
@@ -442,16 +465,18 @@
 
                 <TextView
                     android:id="@+id/base"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Base"
+                    android:text="@string/text_base"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/occupation" />
 
                 <TextView
                     android:id="@+id/base_textView"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -472,22 +497,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/berkshire_swash"
-            android:text="Connections"
+            android:text="@string/text_connections"
+            android:layout_marginStart="8dp"
             android:textSize="22sp" />
 
         <com.google.android.material.card.MaterialCardView style="@style/CardViewStyle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/groupAffiliation"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Group Affiliation"
+                    android:text="@string/text_group_affiliation"
                     app:layout_constraintBottom_toTopOf="@id/relatives"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -495,6 +521,7 @@
                 <TextView
                     android:id="@+id/groupAffiliation_textView"
                     android:layout_width="0dp"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -506,10 +533,11 @@
 
                 <TextView
                     android:id="@+id/relatives"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Relatives"
+                    android:text="@string/text_relatives"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/groupAffiliation" />
@@ -517,6 +545,7 @@
                 <TextView
                     android:id="@+id/relatives_textView"
                     android:layout_width="0dp"
+                    style="@style/SmallTextKeyStyle"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"

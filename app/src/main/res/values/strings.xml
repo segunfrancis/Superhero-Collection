@@ -39,4 +39,29 @@
     <string name="about_developer_summary">Information about the developer of this app</string>
     <string name="about_app">About app</string>
     <string name="about_app_summary">Information about the app</string>
+
+    <string name="text_eye_colour">Eye Colour:</string>
+    <string name="text_gender">Gender:</string>
+    <string name="text_hair_colour">Hair Colour:</string>
+    <string name="text_race">Race:</string>
+    <string name="text_height">Height:</string>
+    <string name="text_weight">Weight:</string>
+    <string name="text_intelligence">Intelligence</string>
+    <string name="text_strength">Strength</string>
+    <string name="text_speed">Speed</string>
+    <string name="text_power_stats">Power Stats</string>
+    <string name="text_combat">Combat</string>
+    <string name="text_power">Power</string>
+    <string name="text_durability">Durability</string>
+    <string name="text_biography">Biography</string>
+    <string name="text_full_name">Full Name</string>
+    <string name="text_aliases">Aliases</string>
+    <string name="text_place_of_birth">Place of Birth</string>
+    <string name="text_alignment">Alignment</string>
+    <string name="text_work">Work</string>
+    <string name="text_occupation">Occupation</string>
+    <string name="text_base">Base</string>
+    <string name="text_connections">Connections</string>
+    <string name="text_group_affiliation">Group Affiliation</string>
+    <string name="text_relatives">Relatives</string>
 </resources>

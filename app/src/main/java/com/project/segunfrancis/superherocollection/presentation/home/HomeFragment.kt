@@ -133,4 +133,9 @@ class HomeFragment : Fragment() {
         )
         toast?.show()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        toast?.cancel()
+    }
 }
